@@ -1,0 +1,1108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="SAP__common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="SAP__measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CORE',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="SAP__core"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="SAP__capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="SAP__aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="SAP__validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="SAP__UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HTML5',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.HTML5.v1" Alias="SAP__HTML5"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PDF',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.PDF.v1" Alias="SAP__PDF"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_SESSION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Session.v1" Alias="SAP__session"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HIERARCHY',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Hierarchy.v1" Alias="SAP__hierarchy"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="com.sap.gateway.srvd_a2x.zui_poitem.v0001" Alias="SAP__self">
+            <Annotation Term="SAP__core.SchemaVersion" String="1.0.0"/>
+            <EntityType Name="ZPROSTATUSVHType">
+                <Key>
+                    <PropertyRef Name="PurchasingProcessingStatus"/>
+                </Key>
+                <Property Name="PurchasingProcessingStatus" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="PurchasingProcessingStatusName" Type="Edm.String" Nullable="false" MaxLength="60"/>
+            </EntityType>
+            <EntityType Name="ZR_PO_ITEM_DATAType">
+                <Key>
+                    <PropertyRef Name="PONumber"/>
+                    <PropertyRef Name="POItemNumber"/>
+                </Key>
+                <Property Name="PONumber" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="POItemNumber" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <Property Name="CreatedBy" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="DeletionIndicator" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="Supplier" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="SupplierName" Type="Edm.String" Nullable="false" MaxLength="80"/>
+                <Property Name="SupplierAddress" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="PurchaseDocumentDate" Type="Edm.Date"/>
+                <Property Name="CreatedOn" Type="Edm.Date"/>
+                <Property Name="DeliveryDate" Type="Edm.Date"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="18"/>
+                <Property Name="MaterialName" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="MaterialGroup" Type="Edm.String" Nullable="false" MaxLength="9"/>
+                <Property Name="DeliveryCompleted" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="pohflag" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="POQuantity" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3"/>
+                <Property Name="GRQuantity" Type="Edm.Decimal" Nullable="false" Precision="18" Scale="3"/>
+                <Property Name="IVQuantity" Type="Edm.Decimal" Nullable="false" Precision="18" Scale="3"/>
+                <Property Name="IVAmount" Type="Edm.Decimal" Nullable="false" Precision="18" Scale="variable"/>
+                <Property Name="StilltobeGRQuantity" Type="Edm.Decimal" Nullable="false" Precision="19" Scale="3"/>
+                <Property Name="StilltobeIVQuantity" Type="Edm.Decimal" Nullable="false" Precision="19" Scale="3"/>
+                <Property Name="SKUQuantity" Type="Edm.Decimal" Nullable="false" Precision="18" Scale="3"/>
+                <Property Name="SKUUnit" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="UnitPrice" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="PlantName" Type="Edm.String" Nullable="false" MaxLength="30"/>
+                <Property Name="ConditionPriceUnit" Type="Edm.Decimal" Nullable="false" Precision="11" Scale="variable"/>
+                <Property Name="POItemAmount" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="variable"/>
+                <Property Name="PRNumber" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="PRItemNumber" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <Property Name="SeqNo" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="SentOn" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="SentAt" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="PurchaseOrderQuantityUnit" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="PurchasingOrganization" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="PurchasingOrganizationName" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="PurchasingGroup" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="PurchasingGroupName" Type="Edm.String" Nullable="false" MaxLength="18"/>
+                <Property Name="PurchasingProcessingStatus" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="PurchasingProcessingStatusName" Type="Edm.String" Nullable="false" MaxLength="60"/>
+                <Property Name="StorageLocation" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="StorageLocationName" Type="Edm.String" Nullable="false" MaxLength="16"/>
+                <Property Name="PurchaseOrderItemCategory" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="PurchaseorderItemCatName" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="ReleaseIndicator" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="RekeaseIndicatorName" Type="Edm.String" Nullable="false" MaxLength="30"/>
+                <Property Name="Subjecttorelease" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="AccountAssignmentCategory" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="AccAssignmentCategoryName" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="QuantityConversion" Type="Edm.Decimal" Nullable="false" Precision="5"/>
+                <Property Name="OrderPriceUnit" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="NumberatorEQTo" Type="Edm.Decimal" Nullable="false" Precision="5"/>
+                <Property Name="DocumentCondition" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="PurchasingDocumentCategory" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="PurchasingDocumentType" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="PurchasingDocumentTypeName" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="Denominator" Type="Edm.Decimal" Nullable="false" Precision="5"/>
+                <Property Name="GRQtyforUOM" Type="Edm.Decimal" Nullable="false" Precision="18" Scale="3"/>
+                <Property Name="IVQtyforUOM" Type="Edm.Decimal" Nullable="false" Precision="18" Scale="3"/>
+                <Property Name="StilltobeGRQuantityUOM" Type="Edm.Decimal" Nullable="false" Precision="19" Scale="3"/>
+                <Property Name="StilltobeIVQuantityUOM" Type="Edm.Decimal" Nullable="false" Precision="19" Scale="3"/>
+                <Property Name="PurchasingInfoRecord" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="SAP__Messages" Type="Collection(com.sap.gateway.srvd_a2x.zui_poitem.v0001.SAP__Message)" Nullable="false"/>
+            </EntityType>
+            <EntityType Name="ZMATGRPVHType">
+                <Key>
+                    <PropertyRef Name="MATERIALGRP"/>
+                </Key>
+                <Property Name="MATERIALGRP" Type="Edm.String" Nullable="false" MaxLength="9"/>
+                <Property Name="MaterialGrpDescription" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="MaterialGrpDescription2" Type="Edm.String" Nullable="false" MaxLength="60"/>
+            </EntityType>
+            <EntityType Name="ZPURGRPVHType">
+                <Key>
+                    <PropertyRef Name="PurchasingGroup"/>
+                </Key>
+                <Property Name="PurchasingGroup" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="PurchasingGrpName" Type="Edm.String" Nullable="false" MaxLength="18"/>
+            </EntityType>
+            <EntityType Name="ZCOMPANYCODEVHType">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="CompanyCodeName" Type="Edm.String" Nullable="false" MaxLength="25"/>
+            </EntityType>
+            <EntityType Name="ZPOTYPEVHType">
+                <Key>
+                    <PropertyRef Name="POTYPE"/>
+                </Key>
+                <Property Name="POTYPE" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="POTYE" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="POTYPENAME" Type="Edm.String" Nullable="false" MaxLength="20"/>
+            </EntityType>
+            <EntityType Name="ZPURORGVHType">
+                <Key>
+                    <PropertyRef Name="PurschaseOrganization"/>
+                </Key>
+                <Property Name="PurschaseOrganization" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="PurchaseOrgName" Type="Edm.String" Nullable="false" MaxLength="20"/>
+            </EntityType>
+            <ComplexType Name="ZPOCLOSING">
+                <Property Name="DeletionIndicator" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="DeliveryCompleted" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="Errormsg" Type="Edm.String" Nullable="false" MaxLength="300"/>
+                <Property Name="GR_QTy" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3"/>
+                <Property Name="PO_ItemNumber" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <Property Name="PO_Number" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="PurchaseOrderQuantityUnit" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="StilltobeGRQuantity" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3"/>
+            </ComplexType>
+            <ComplexType Name="SAP__Message">
+                <Property Name="code" Type="Edm.String" Nullable="false"/>
+                <Property Name="message" Type="Edm.String" Nullable="false"/>
+                <Property Name="target" Type="Edm.String"/>
+                <Property Name="additionalTargets" Type="Collection(Edm.String)" Nullable="false"/>
+                <Property Name="transition" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="numericSeverity" Type="Edm.Byte" Nullable="false"/>
+                <Property Name="longtextUrl" Type="Edm.String"/>
+            </ComplexType>
+            <Action Name="send_email" IsBound="true">
+                <Parameter Name="_it" Type="Collection(com.sap.gateway.srvd_a2x.zui_poitem.v0001.ZR_PO_ITEM_DATAType)" Nullable="false"/>
+                <Parameter Name="PO_Number" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Parameter Name="PO_ItemNumber" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <Parameter Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Parameter Name="Supplier" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Parameter Name="SupplierAddress" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Parameter Name="SupplierName" Type="Edm.String" Nullable="false" MaxLength="35"/>
+                <Parameter Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Parameter Name="Material" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Parameter Name="MaterialName" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Parameter Name="PurchaseOrderQuantityUnit" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Parameter Name="POQuantity" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3"/>
+                <Parameter Name="Currency" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Parameter Name="ConditionPriceUnit" Type="Edm.Decimal" Nullable="false" Precision="11" Scale="variable"/>
+                <Parameter Name="UnitPrice" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Parameter Name="POItemAmount" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="variable"/>
+                <Parameter Name="DeliveryDate" Type="Edm.Date" Nullable="true"/>
+                <Parameter Name="Errormsg" Type="Edm.String" Nullable="false" MaxLength="300"/>
+                <Parameter Name="Status" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <ReturnType Type="com.sap.gateway.srvd_a2x.zui_poitem.v0001.ZPOCLOSING" Nullable="false"/>
+            </Action>
+            <Action Name="poclosing" IsBound="true">
+                <Parameter Name="_it" Type="Collection(com.sap.gateway.srvd_a2x.zui_poitem.v0001.ZR_PO_ITEM_DATAType)" Nullable="false"/>
+                <Parameter Name="PO_Number" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Parameter Name="PO_ItemNumber" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <Parameter Name="PurchaseOrderQuantityUnit" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Parameter Name="GR_QTy" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3"/>
+                <Parameter Name="DeletionIndicator" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Parameter Name="DeliveryCompleted" Type="Edm.Boolean" Nullable="false"/>
+                <Parameter Name="StilltobeGRQuantity" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3"/>
+                <Parameter Name="Errormsg" Type="Edm.String" Nullable="false" MaxLength="300"/>
+                <Parameter Name="Status" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <ReturnType Type="com.sap.gateway.srvd_a2x.zui_poitem.v0001.ZPOCLOSING" Nullable="false"/>
+            </Action>
+            <EntityContainer Name="Container">
+                <EntitySet Name="ZCOMPANYCODEVH" EntityType="com.sap.gateway.srvd_a2x.zui_poitem.v0001.ZCOMPANYCODEVHType"/>
+                <EntitySet Name="ZMATGRPVH" EntityType="com.sap.gateway.srvd_a2x.zui_poitem.v0001.ZMATGRPVHType"/>
+                <EntitySet Name="ZPOTYPEVH" EntityType="com.sap.gateway.srvd_a2x.zui_poitem.v0001.ZPOTYPEVHType"/>
+                <EntitySet Name="ZPROSTATUSVH" EntityType="com.sap.gateway.srvd_a2x.zui_poitem.v0001.ZPROSTATUSVHType"/>
+                <EntitySet Name="ZPURGRPVH" EntityType="com.sap.gateway.srvd_a2x.zui_poitem.v0001.ZPURGRPVHType"/>
+                <EntitySet Name="ZPURORGVH" EntityType="com.sap.gateway.srvd_a2x.zui_poitem.v0001.ZPURORGVHType"/>
+                <EntitySet Name="ZR_PO_ITEM_DATA" EntityType="com.sap.gateway.srvd_a2x.zui_poitem.v0001.ZR_PO_ITEM_DATAType"/>
+            </EntityContainer>
+            <Annotations Target="SAP__self.ZPOCLOSING/GR_QTy">
+                <Annotation Term="SAP__measures.Unit" Path="PurchaseOrderQuantityUnit"/>
+                <Annotation Term="SAP__common.Label" String="Order Quantity"/>
+                <Annotation Term="SAP__common.Heading" String="PO Quantity"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Purchase Order Quantity"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZPOCLOSING/StilltobeGRQuantity">
+                <Annotation Term="SAP__measures.Unit" Path="PurchaseOrderQuantityUnit"/>
+                <Annotation Term="SAP__common.Label" String="Order Quantity"/>
+                <Annotation Term="SAP__common.Heading" String="PO Quantity"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Purchase Order Quantity"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZPROSTATUSVHType/PurchasingProcessingStatus">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Proc. State"/>
+                <Annotation Term="SAP__common.Heading" String="Purchasing Doc. Processing State"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Purchasing Document Processing State"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZPROSTATUSVHType">
+                <Annotation Term="SAP__common.Label" String="Valuehelp for PO procss status"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/ZPROSTATUSVH">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/PONumber">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Purchasing Document"/>
+                <Annotation Term="SAP__common.Heading" String="Pur. Doc."/>
+                <Annotation Term="SAP__common.QuickInfo" String="Purchasing Document Number"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/POItemNumber">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Item"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Item Number of Purchasing Document"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/CreatedBy">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Created By"/>
+                <Annotation Term="SAP__common.QuickInfo" String="User of person who created a purchasing document"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/DeletionIndicator">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Deletion Indicator"/>
+                <Annotation Term="SAP__common.Heading" String="D"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Deletion Indicator in Purchasing Document"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/Supplier">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Supplier"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/SupplierAddress">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Address"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/Material">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Material"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Material Number"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/MaterialGroup">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Material Group"/>
+                <Annotation Term="SAP__common.Heading" String="Matl Group"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/POQuantity">
+                <Annotation Term="SAP__measures.Unit" Path="SKUUnit"/>
+                <Annotation Term="SAP__common.Label" String="Order Quantity"/>
+                <Annotation Term="SAP__common.Heading" String="PO Quantity"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Purchase Order Quantity"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/GRQuantity">
+                <Annotation Term="SAP__measures.Unit" Path="SKUUnit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/IVQuantity">
+                <Annotation Term="SAP__measures.Unit" Path="SKUUnit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/IVAmount">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="Currency"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/StilltobeGRQuantity">
+                <Annotation Term="SAP__measures.Unit" Path="SKUUnit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/StilltobeIVQuantity">
+                <Annotation Term="SAP__measures.Unit" Path="SKUUnit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/SKUQuantity">
+                <Annotation Term="SAP__measures.Unit" Path="SKUUnit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/SKUUnit">
+                <Annotation Term="SAP__common.IsUnit"/>
+                <Annotation Term="SAP__common.Label" String="Base Unit of Measure"/>
+                <Annotation Term="SAP__common.Heading" String="BUn"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/UnitPrice">
+                <Annotation Term="SAP__common.IsUnit"/>
+                <Annotation Term="SAP__common.Label" String="Order Price Unit"/>
+                <Annotation Term="SAP__common.Heading" String="OPU"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Order Price Unit (Purchasing)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/Plant">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Plant"/>
+                <Annotation Term="SAP__common.Heading" String="Plnt"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/ConditionPriceUnit">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="Currency"/>
+                <Annotation Term="SAP__common.Label" String="Net Order Price"/>
+                <Annotation Term="SAP__common.Heading" String="Net Price"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Net Price in Purchasing Document (in Document Currency)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/POItemAmount">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="Currency"/>
+                <Annotation Term="SAP__common.Label" String="Net Order Value"/>
+                <Annotation Term="SAP__common.Heading" String="Net Value"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Net Order Value in PO Currency"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/PRNumber">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Purchase Requisition"/>
+                <Annotation Term="SAP__common.Heading" String="Purch.Req."/>
+                <Annotation Term="SAP__common.QuickInfo" String="Purchase Requisition Number"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/PRItemNumber">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Item of requisition"/>
+                <Annotation Term="SAP__common.Heading" String="Item"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Item number of purchase requisition"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/SeqNo">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/SentOn">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/SentAt">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/PurchaseOrderQuantityUnit">
+                <Annotation Term="SAP__common.IsUnit"/>
+                <Annotation Term="SAP__common.Label" String="Order Unit"/>
+                <Annotation Term="SAP__common.Heading" String="OUn"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Purchase Order Unit of Measure"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/PurchasingOrganization">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Purch. Organization"/>
+                <Annotation Term="SAP__common.Heading" String="POrg"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Purchasing Organization"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/PurchasingGroup">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Purchasing Group"/>
+                <Annotation Term="SAP__common.Heading" String="PGr"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/PurchasingProcessingStatus">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Proc. State"/>
+                <Annotation Term="SAP__common.Heading" String="Purchasing Doc. Processing State"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Purchasing Document Processing State"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/StorageLocation">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Storage Location"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/PurchaseOrderItemCategory">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Item Category"/>
+                <Annotation Term="SAP__common.Heading" String="I"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Item category in purchasing document"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/ReleaseIndicator">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Release indicator"/>
+                <Annotation Term="SAP__common.Heading" String="Rel"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Release Indicator: Purchasing Document"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/AccountAssignmentCategory">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Acct Assignment Cat."/>
+                <Annotation Term="SAP__common.Heading" String="A"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Account Assignment Category"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/OrderPriceUnit">
+                <Annotation Term="SAP__common.IsUnit"/>
+                <Annotation Term="SAP__common.Label" String="Order Price Unit"/>
+                <Annotation Term="SAP__common.Heading" String="OPU"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Order Price Unit (Purchasing)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/CompanyCode">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Company Code"/>
+                <Annotation Term="SAP__common.Heading" String="CoCd"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/DocumentCondition">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Doc. Condition No."/>
+                <Annotation Term="SAP__common.Heading" String="Doc.Cond."/>
+                <Annotation Term="SAP__common.QuickInfo" String="Number of the Document Condition"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/Currency">
+                <Annotation Term="SAP__common.IsCurrency"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Currency"/>
+                <Annotation Term="SAP__common.Heading" String="Crcy"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Currency Key"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/PurchasingDocumentCategory">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Purch. Doc. Category"/>
+                <Annotation Term="SAP__common.Heading" String="C"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Purchasing Document Category"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/PurchasingDocumentType">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Purchasing Doc. Type"/>
+                <Annotation Term="SAP__common.Heading" String="Type"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Purchasing Document Type"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/GRQtyforUOM">
+                <Annotation Term="SAP__measures.Unit" Path="SKUUnit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/IVQtyforUOM">
+                <Annotation Term="SAP__measures.Unit" Path="SKUUnit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/StilltobeGRQuantityUOM">
+                <Annotation Term="SAP__measures.Unit" Path="SKUUnit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/StilltobeIVQuantityUOM">
+                <Annotation Term="SAP__measures.Unit" Path="SKUUnit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/PurchasingInfoRecord">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Purchasing Info Rec."/>
+                <Annotation Term="SAP__common.Heading" String="Info Rec."/>
+                <Annotation Term="SAP__common.QuickInfo" String="Purchasing Info Record Number"/>
+            </Annotations>
+            <Annotations Target="SAP__self.send_email(Collection(SAP__self.ZR_PO_ITEM_DATAType))/Currency">
+                <Annotation Term="SAP__common.IsCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Currency"/>
+                <Annotation Term="SAP__common.Heading" String="Crcy"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Currency Key"/>
+            </Annotations>
+            <Annotations Target="SAP__self.send_email(Collection(SAP__self.ZR_PO_ITEM_DATAType))/ConditionPriceUnit">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="Currency"/>
+                <Annotation Term="SAP__common.Label" String="Net Order Price"/>
+                <Annotation Term="SAP__common.Heading" String="Net Price"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Net Price in Purchasing Document (in Document Currency)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.send_email(Collection(SAP__self.ZR_PO_ITEM_DATAType))/POItemAmount">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="Currency"/>
+                <Annotation Term="SAP__common.Label" String="Net Order Value"/>
+                <Annotation Term="SAP__common.Heading" String="Net Value"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Net Order Value in PO Currency"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType">
+                <Annotation Term="SAP__common.Label" String="Root view entity of PO ITEM"/>
+                <Annotation Term="SAP__common.Messages" Path="SAP__Messages"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/ZR_PO_ITEM_DATA">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="POQuantity"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="GRQuantity"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="IVQuantity"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="IVAmount"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="StilltobeGRQuantity"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="StilltobeIVQuantity"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="SKUQuantity"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="ConditionPriceUnit"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="POItemAmount"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="GRQtyforUOM"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="IVQtyforUOM"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="StilltobeGRQuantityUOM"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="StilltobeIVQuantityUOM"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.Container">
+                <Annotation Term="SAP__CodeList.CurrencyCodes">
+                    <Record>
+                        <PropertyValue Property="Url" String="../../../../default/iwbep/common/0001/$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="Currencies"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__CodeList.UnitsOfMeasure">
+                    <Record>
+                        <PropertyValue Property="Url" String="../../../../default/iwbep/common/0001/$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="UnitsOfMeasure"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="SAP__aggregation.RollupType/None"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+                <Annotation Term="SAP__capabilities.FilterFunctions">
+                    <Collection>
+                        <String>eq</String>
+                        <String>ne</String>
+                        <String>gt</String>
+                        <String>ge</String>
+                        <String>lt</String>
+                        <String>le</String>
+                        <String>and</String>
+                        <String>or</String>
+                        <String>contains</String>
+                        <String>startswith</String>
+                        <String>endswith</String>
+                        <String>any</String>
+                        <String>all</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SupportedFormats">
+                    <Collection>
+                        <String>application/json</String>
+                        <String>application/pdf</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__PDF.Features">
+                    <Record>
+                        <PropertyValue Property="DocumentDescriptionReference" String="../../../../default/iwbep/common/0001/$metadata"/>
+                        <PropertyValue Property="DocumentDescriptionCollection" String="MyDocumentDescriptions"/>
+                        <PropertyValue Property="ArchiveFormat" Bool="true"/>
+                        <PropertyValue Property="Border" Bool="true"/>
+                        <PropertyValue Property="CoverPage" Bool="true"/>
+                        <PropertyValue Property="FitToPage" Bool="true"/>
+                        <PropertyValue Property="FontName" Bool="true"/>
+                        <PropertyValue Property="FontSize" Bool="true"/>
+                        <PropertyValue Property="Margin" Bool="true"/>
+                        <PropertyValue Property="Padding" Bool="true"/>
+                        <PropertyValue Property="Signature" Bool="true"/>
+                        <PropertyValue Property="HeaderFooter" Bool="true"/>
+                        <PropertyValue Property="ResultSizeDefault" Int="20000"/>
+                        <PropertyValue Property="ResultSizeMaximum" Int="20000"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.KeyAsSegmentSupported"/>
+                <Annotation Term="SAP__capabilities.AsynchronousRequestsSupported"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZMATGRPVHType/MATERIALGRP">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Material Group"/>
+                <Annotation Term="SAP__common.Heading" String="Matl Group"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZMATGRPVHType">
+                <Annotation Term="SAP__common.Label" String="Valuehelp for Material GRP"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/ZMATGRPVH">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.ZPURGRPVHType/PurchasingGroup">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Purchasing Group"/>
+                <Annotation Term="SAP__common.Heading" String="PGr"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZPURGRPVHType">
+                <Annotation Term="SAP__common.Label" String="Valuehelp for Purschasing Group"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/ZPURGRPVH">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.ZCOMPANYCODEVHType/CompanyCode">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Company Code"/>
+                <Annotation Term="SAP__common.Heading" String="CoCd"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZCOMPANYCODEVHType">
+                <Annotation Term="SAP__common.Label" String="Valuehelp for Company Code"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/ZCOMPANYCODEVH">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.ZPOTYPEVHType/POTYPE">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Purchasing Doc. Type"/>
+                <Annotation Term="SAP__common.Heading" String="Type"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Purchasing Document Type"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZPOTYPEVHType/POTYE">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Purch. Doc. Category"/>
+                <Annotation Term="SAP__common.Heading" String="Cat"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Purchasing Document Category"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZPOTYPEVHType">
+                <Annotation Term="SAP__common.Label" String="Valuehelp for PO TYPE"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/ZPOTYPEVH">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.ZPURORGVHType/PurschaseOrganization">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Purch. Organization"/>
+                <Annotation Term="SAP__common.Heading" String="POrg"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Purchasing Organization"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZPURORGVHType">
+                <Annotation Term="SAP__common.Label" String="Valuehelp for Purschaseorganization"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/ZPURORGVH">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.ZPROSTATUSVHType/PurchasingProcessingStatusName">
+                <Annotation Term="SAP__common.Label" String="Purch. Processing Status Name"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/SupplierName">
+                <Annotation Term="SAP__common.Label" String="Name of Supplier"/>
+                <Annotation Term="SAP__common.Heading" String="Supplier"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/PurchaseDocumentDate">
+                <Annotation Term="SAP__common.Label" String="Document Date"/>
+                <Annotation Term="SAP__common.Heading" String="Doc. Date"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Purchasing Document Date"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/CreatedOn">
+                <Annotation Term="SAP__common.Label" String="Created On"/>
+                <Annotation Term="SAP__common.Heading" String="Created"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Creation Date of Purchasing Document"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/DeliveryDate">
+                <Annotation Term="SAP__common.Label" String="Delivery Date"/>
+                <Annotation Term="SAP__common.Heading" String="Deliv. Date"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Item Delivery Date"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/MaterialName">
+                <Annotation Term="SAP__common.Label" String="Material Description"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/DeliveryCompleted">
+                <Annotation Term="SAP__common.Label" String="Delivery Completed"/>
+                <Annotation Term="SAP__common.Heading" String="DCI"/>
+                <Annotation Term="SAP__common.QuickInfo" String="&quot;Delivery Completed&quot; Indicator"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/PlantName">
+                <Annotation Term="SAP__common.Label" String="Plant Name"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/PurchasingOrganizationName">
+                <Annotation Term="SAP__common.Label" String="Purch. Org. Name"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Purchasing Organization Name"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/PurchasingGroupName">
+                <Annotation Term="SAP__common.Label" String="Purchasing Grp. Name"/>
+                <Annotation Term="SAP__common.Heading" String="Purchasing Group Name"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Purchasing Group Name"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/PurchasingProcessingStatusName">
+                <Annotation Term="SAP__common.Label" String="Purch. Processing Status Name"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/StorageLocationName">
+                <Annotation Term="SAP__common.Label" String="Storage Loc. Name"/>
+                <Annotation Term="SAP__common.Heading" String="Storage Location Name"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Storage Location Name"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/PurchaseorderItemCatName">
+                <Annotation Term="SAP__common.Label" String="Text for Item Cat."/>
+                <Annotation Term="SAP__common.QuickInfo" String="Text for Item Category"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/RekeaseIndicatorName">
+                <Annotation Term="SAP__common.Label" String="Description"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Description of Release Indicator"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/Subjecttorelease">
+                <Annotation Term="SAP__common.Label" String="Subject to Release"/>
+                <Annotation Term="SAP__common.Heading" String="R"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Release Not Yet Completely Effected"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/AccAssignmentCategoryName">
+                <Annotation Term="SAP__common.Label" String="AcctAssgntCateg Desc"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Account Assignment Category Description"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/QuantityConversion">
+                <Annotation Term="SAP__common.Label" String="Price Unit"/>
+                <Annotation Term="SAP__common.Heading" String="Per"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/NumberatorEQTo">
+                <Annotation Term="SAP__common.Label" String="Equal To"/>
+                <Annotation Term="SAP__common.Heading" String="Eq. To"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Numerator for Conversion of Order Unit to Base Unit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/PurchasingDocumentTypeName">
+                <Annotation Term="SAP__common.Label" String="Doc. Type Descript."/>
+                <Annotation Term="SAP__common.QuickInfo" String="Short Description of Purchasing Document Type"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZR_PO_ITEM_DATAType/Denominator">
+                <Annotation Term="SAP__common.Label" String="Denominator"/>
+                <Annotation Term="SAP__common.Heading" String="Denom."/>
+                <Annotation Term="SAP__common.QuickInfo" String="Denominator for Conversion of Order Unit to Base Unit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZMATGRPVHType/MaterialGrpDescription">
+                <Annotation Term="SAP__common.Label" String="Material Group Desc."/>
+                <Annotation Term="SAP__common.QuickInfo" String="Material Group Description"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZMATGRPVHType/MaterialGrpDescription2">
+                <Annotation Term="SAP__common.Label" String="Mat.Grp Desc. 2"/>
+                <Annotation Term="SAP__common.Heading" String="Description 2 for the Material Group"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Description of the Material Group"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZPURGRPVHType/PurchasingGrpName">
+                <Annotation Term="SAP__common.Label" String="Description p. group"/>
+                <Annotation Term="SAP__common.Heading" String="Description"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Description of purchasing group"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZCOMPANYCODEVHType/CompanyCodeName">
+                <Annotation Term="SAP__common.Label" String="Company Name"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Name of Company Code or Company"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZPOTYPEVHType/POTYPENAME">
+                <Annotation Term="SAP__common.Label" String="Doc. Type Descript."/>
+                <Annotation Term="SAP__common.QuickInfo" String="Short Description of Purchasing Document Type"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZPURORGVHType/PurchaseOrgName">
+                <Annotation Term="SAP__common.Label" String="Description"/>
+                <Annotation Term="SAP__common.Heading" String="Purch. org. descr."/>
+                <Annotation Term="SAP__common.QuickInfo" String="Description of purchasing organization"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZPOCLOSING/DeletionIndicator">
+                <Annotation Term="SAP__common.Label" String="Deletion Indicator"/>
+                <Annotation Term="SAP__common.Heading" String="D"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Deletion Indicator in Purchasing Document"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZPOCLOSING/DeliveryCompleted">
+                <Annotation Term="SAP__common.Label" String="Delivery Completed"/>
+                <Annotation Term="SAP__common.Heading" String="DCI"/>
+                <Annotation Term="SAP__common.QuickInfo" String="&quot;Delivery Completed&quot; Indicator"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZPOCLOSING/Errormsg">
+                <Annotation Term="SAP__common.Label" String="Character 300"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZPOCLOSING/PO_ItemNumber">
+                <Annotation Term="SAP__common.Label" String="Item"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Item Number of Purchasing Document"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZPOCLOSING/PO_Number">
+                <Annotation Term="SAP__common.Label" String="Purchasing Document"/>
+                <Annotation Term="SAP__common.Heading" String="Pur. Doc."/>
+                <Annotation Term="SAP__common.QuickInfo" String="Purchasing Document Number"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZPOCLOSING/PurchaseOrderQuantityUnit">
+                <Annotation Term="SAP__common.Label" String="Base Unit of Measure"/>
+                <Annotation Term="SAP__common.Heading" String="BUn"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ZPOCLOSING/Status">
+                <Annotation Term="SAP__common.Label" String="Single-Character Flag"/>
+            </Annotations>
+            <Annotations Target="SAP__self.send_email(Collection(SAP__self.ZR_PO_ITEM_DATAType))/PO_Number">
+                <Annotation Term="SAP__common.Label" String="Purchasing Document"/>
+                <Annotation Term="SAP__common.Heading" String="Pur. Doc."/>
+                <Annotation Term="SAP__common.QuickInfo" String="Purchasing Document Number"/>
+            </Annotations>
+            <Annotations Target="SAP__self.send_email(Collection(SAP__self.ZR_PO_ITEM_DATAType))/PO_ItemNumber">
+                <Annotation Term="SAP__common.Label" String="Item"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Item Number of Purchasing Document"/>
+            </Annotations>
+            <Annotations Target="SAP__self.send_email(Collection(SAP__self.ZR_PO_ITEM_DATAType))/CompanyCode">
+                <Annotation Term="SAP__common.Label" String="Company Code"/>
+                <Annotation Term="SAP__common.Heading" String="CoCd"/>
+            </Annotations>
+            <Annotations Target="SAP__self.send_email(Collection(SAP__self.ZR_PO_ITEM_DATAType))/Supplier">
+                <Annotation Term="SAP__common.Label" String="Supplier"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Account Number of Supplier"/>
+            </Annotations>
+            <Annotations Target="SAP__self.send_email(Collection(SAP__self.ZR_PO_ITEM_DATAType))/SupplierAddress">
+                <Annotation Term="SAP__common.Label" String="Address"/>
+            </Annotations>
+            <Annotations Target="SAP__self.send_email(Collection(SAP__self.ZR_PO_ITEM_DATAType))/SupplierName">
+                <Annotation Term="SAP__common.Label" String="Name"/>
+                <Annotation Term="SAP__common.Heading" String="Name 1"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Name 1"/>
+            </Annotations>
+            <Annotations Target="SAP__self.send_email(Collection(SAP__self.ZR_PO_ITEM_DATAType))/Plant">
+                <Annotation Term="SAP__common.Label" String="Plant"/>
+                <Annotation Term="SAP__common.Heading" String="Plnt"/>
+            </Annotations>
+            <Annotations Target="SAP__self.send_email(Collection(SAP__self.ZR_PO_ITEM_DATAType))/Material">
+                <Annotation Term="SAP__common.Label" String="Material"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Material Number"/>
+            </Annotations>
+            <Annotations Target="SAP__self.send_email(Collection(SAP__self.ZR_PO_ITEM_DATAType))/MaterialName">
+                <Annotation Term="SAP__common.Label" String="Material Description"/>
+            </Annotations>
+            <Annotations Target="SAP__self.send_email(Collection(SAP__self.ZR_PO_ITEM_DATAType))/PurchaseOrderQuantityUnit">
+                <Annotation Term="SAP__common.Label" String="Order Unit"/>
+                <Annotation Term="SAP__common.Heading" String="OUn"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Purchase Order Unit of Measure"/>
+            </Annotations>
+            <Annotations Target="SAP__self.send_email(Collection(SAP__self.ZR_PO_ITEM_DATAType))/POQuantity">
+                <Annotation Term="SAP__common.Label" String="Order Quantity"/>
+                <Annotation Term="SAP__common.Heading" String="PO Quantity"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Purchase Order Quantity"/>
+            </Annotations>
+            <Annotations Target="SAP__self.send_email(Collection(SAP__self.ZR_PO_ITEM_DATAType))/UnitPrice">
+                <Annotation Term="SAP__common.Label" String="Order Price Unit"/>
+                <Annotation Term="SAP__common.Heading" String="OPUn"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Order Price Unit (Purchasing)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.send_email(Collection(SAP__self.ZR_PO_ITEM_DATAType))/DeliveryDate">
+                <Annotation Term="SAP__common.Label" String="Delivery Date"/>
+                <Annotation Term="SAP__common.Heading" String="Deliv. Date"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Item Delivery Date"/>
+            </Annotations>
+            <Annotations Target="SAP__self.send_email(Collection(SAP__self.ZR_PO_ITEM_DATAType))/Errormsg">
+                <Annotation Term="SAP__common.Label" String="Character 300"/>
+            </Annotations>
+            <Annotations Target="SAP__self.send_email(Collection(SAP__self.ZR_PO_ITEM_DATAType))/Status">
+                <Annotation Term="SAP__common.Label" String="Single-Character Flag"/>
+            </Annotations>
+            <Annotations Target="SAP__self.poclosing(Collection(SAP__self.ZR_PO_ITEM_DATAType))/PO_Number">
+                <Annotation Term="SAP__common.Label" String="Purchasing Document"/>
+                <Annotation Term="SAP__common.Heading" String="Pur. Doc."/>
+                <Annotation Term="SAP__common.QuickInfo" String="Purchasing Document Number"/>
+            </Annotations>
+            <Annotations Target="SAP__self.poclosing(Collection(SAP__self.ZR_PO_ITEM_DATAType))/PO_ItemNumber">
+                <Annotation Term="SAP__common.Label" String="Item"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Item Number of Purchasing Document"/>
+            </Annotations>
+            <Annotations Target="SAP__self.poclosing(Collection(SAP__self.ZR_PO_ITEM_DATAType))/PurchaseOrderQuantityUnit">
+                <Annotation Term="SAP__common.Label" String="Base Unit of Measure"/>
+                <Annotation Term="SAP__common.Heading" String="BUn"/>
+            </Annotations>
+            <Annotations Target="SAP__self.poclosing(Collection(SAP__self.ZR_PO_ITEM_DATAType))/GR_QTy">
+                <Annotation Term="SAP__common.Label" String="Order Quantity"/>
+                <Annotation Term="SAP__common.Heading" String="PO Quantity"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Purchase Order Quantity"/>
+            </Annotations>
+            <Annotations Target="SAP__self.poclosing(Collection(SAP__self.ZR_PO_ITEM_DATAType))/DeletionIndicator">
+                <Annotation Term="SAP__common.Label" String="Deletion Indicator"/>
+                <Annotation Term="SAP__common.Heading" String="D"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Deletion Indicator in Purchasing Document"/>
+            </Annotations>
+            <Annotations Target="SAP__self.poclosing(Collection(SAP__self.ZR_PO_ITEM_DATAType))/DeliveryCompleted">
+                <Annotation Term="SAP__common.Label" String="Delivery Completed"/>
+                <Annotation Term="SAP__common.Heading" String="DCI"/>
+                <Annotation Term="SAP__common.QuickInfo" String="&quot;Delivery Completed&quot; Indicator"/>
+            </Annotations>
+            <Annotations Target="SAP__self.poclosing(Collection(SAP__self.ZR_PO_ITEM_DATAType))/StilltobeGRQuantity">
+                <Annotation Term="SAP__common.Label" String="Order Quantity"/>
+                <Annotation Term="SAP__common.Heading" String="PO Quantity"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Purchase Order Quantity"/>
+            </Annotations>
+            <Annotations Target="SAP__self.poclosing(Collection(SAP__self.ZR_PO_ITEM_DATAType))/Errormsg">
+                <Annotation Term="SAP__common.Label" String="Character 300"/>
+            </Annotations>
+            <Annotations Target="SAP__self.poclosing(Collection(SAP__self.ZR_PO_ITEM_DATAType))/Status">
+                <Annotation Term="SAP__common.Label" String="Single-Character Flag"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

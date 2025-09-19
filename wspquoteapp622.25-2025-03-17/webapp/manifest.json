@@ -1,0 +1,267 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "com.kelda.yw.ssc.fe.trx.wspquoteapp622.25",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.15.5",
+      "toolsId": "d1ef2d78-5200-497e-890c-43a17f09a55b"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZCDS_SSC_C_622_PRJ_HDR_25_CDS/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "ZCDS_SSC_C_622_PRJ_HDR_25_CD_VAN",
+            "annotation"
+          ],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "ZCDS_SSC_C_622_PRJ_HDR_25_CD_VAN": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZCDS_SSC_C_622_PRJ_HDR_25_CD_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/ZCDS_SSC_C_622_PRJ_HDR_25_CD_VAN.xml"
+        }
+      },
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.130.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ushell": {},
+        "sap.f": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.suite.ui.generic.template": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.kelda.yw.ssc.fe.trx.wspquoteapp622.25.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Inline",
+          "refreshAfterChange": false,
+          "metadataUrlParams": {
+            "sap-value-list": "none"
+          }
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [],
+      "targets": {}
+    },
+    "extends": {
+      "extensions": {
+        "sap.ui.viewExtensions": {
+          "sap.suite.ui.generic.template.ObjectPage.view.Details": {
+            "CustomField": {
+              "className": "sap.ui.core.Fragment",
+              "fragmentName": "your.namespace.ext.main.ObjectPage.CustomLink",
+              "type": "XML"
+            }
+          }
+        },
+        "sap.ui.controllerExtensions": {
+          "sap.suite.ui.generic.template.ObjectPage.view.Details": {
+            "controllerName": "com.kelda.yw.ssc.fe.trx.wspquoteapp622.25.ext.controller.Extension"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui.generic.app": {
+    "_version": "1.3.0",
+    "settings": {
+      "forceGlobalRefresh": false,
+      "objectPageHeaderType": "Dynamic",
+      "considerAnalyticalParameters": true,
+      "showDraftToggle": false
+    },
+    "pages": {
+      "ListReport|ZCDS_SSC_C_622_PRJ_HDR_25": {
+        "entitySet": "ZCDS_SSC_C_622_PRJ_HDR_25",
+        "component": {
+          "name": "sap.suite.ui.generic.template.ListReport",
+          "list": true,
+          "settings": {
+            "condensedTableLayout": true,
+            "smartVariantManagement": true,
+            "enableTableFilterInPageVariant": true,
+            "dataLoadSettings": {
+              "loadDataOnAppLaunch": "always"
+            },
+            "filterSettings": {
+              "dateSettings": {
+                "useDateRange": true
+              }
+            },
+            "tableSettings": {
+              "type": "ResponsiveTable"
+            }
+          }
+        },
+        "pages": {
+          "ObjectPage|ZCDS_SSC_C_622_PRJ_HDR_25": {
+            "entitySet": "ZCDS_SSC_C_622_PRJ_HDR_25",
+            "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+            "component": {
+              "name": "sap.suite.ui.generic.template.ObjectPage"
+            },
+            "pages": {
+              "ObjectPage|to_MnInput": {
+                "navigationProperty": "to_MnInput",
+                "entitySet": "ZCDS_SSC_C_622_PRJ_MLY_25",
+                "component": {
+                  "name": "sap.suite.ui.generic.template.ObjectPage"
+                }
+              },
+              "ObjectPage|to_SLPChlorination": {
+                "navigationProperty": "to_SLPChlorination",
+                "entitySet": "ZCDS_SSC_C_622_SLP_CLOR_25",
+                "component": {
+                  "name": "sap.suite.ui.generic.template.ObjectPage"
+                }
+              },
+              "ObjectPage|to_MnCon": {
+                "navigationProperty": "to_MnCon",
+                "entitySet": "ZCDS_SSC_C_622_MNCD_25",
+                "component": {
+                  "name": "sap.suite.ui.generic.template.ObjectPage"
+                }
+              },
+              "ObjectPage|to_Infra": {
+                "navigationProperty": "to_Infra",
+                "entitySet": "ZCDS_SSC_C_622_INFRA_25",
+                "component": {
+                  "name": "sap.suite.ui.generic.template.ObjectPage"
+                }
+              },
+              "ObjectPage|to_SrvInput": {
+                "navigationProperty": "to_SrvInput",
+                "entitySet": "ZCDS_SSC_C_622_SVI_25",
+                "component": {
+                  "name": "sap.suite.ui.generic.template.ObjectPage"
+                },
+                "pages": {
+                  "ObjectPage|to_AddtnlSrvInput": {
+                    "navigationProperty": "to_AddtnlSrvInput",
+                    "entitySet": "ZCDS_SSC_C_622_ADSVI_25",
+                    "component": {
+                      "name": "sap.suite.ui.generic.template.ObjectPage"
+                    }
+                  }
+                }
+              },
+              "ObjectPage|to_SPBound": {
+                "navigationProperty": "to_SPBound",
+                "entitySet": "ZCDS_SSC_C_622_SPB_25",
+                "component": {
+                  "name": "sap.suite.ui.generic.template.ObjectPage"
+                }
+              },
+              "ObjectPage|to_InMeter": {
+                "navigationProperty": "to_InMeter",
+                "entitySet": "ZCDS_SSC_C_622_IMO_25",
+                "component": {
+                  "name": "sap.suite.ui.generic.template.ObjectPage"
+                }
+              },
+              "ObjectPage|to_BespokeCosts": {
+                "navigationProperty": "to_BespokeCosts",
+                "entitySet": "ZCDS_SSC_C_622_BESCST_25",
+                "component": {
+                  "name": "sap.suite.ui.generic.template.ObjectPage"
+                }
+              },
+              "ObjectPage|to_TrialHoles": {
+                "navigationProperty": "to_TrialHoles",
+                "entitySet": "ZCDS_SSC_C_622_TRLHOLE_25",
+                "component": {
+                  "name": "sap.suite.ui.generic.template.ObjectPage"
+                }
+              },
+              "ObjectPage|to_BlkService": {
+                "navigationProperty": "to_BlkService",
+                "entitySet": "ZCDS_SSC_C_622_BLK_25",
+                "component": {
+                  "name": "sap.suite.ui.generic.template.ObjectPage"
+                }
+              },
+              "ObjectPage|to_CouncilCharges": {
+                "navigationProperty": "to_CouncilCharges",
+                "entitySet": "ZCDS_SSC_C_622_STWCC_25",
+                "component": {
+                  "name": "sap.suite.ui.generic.template.ObjectPage"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  }
+}

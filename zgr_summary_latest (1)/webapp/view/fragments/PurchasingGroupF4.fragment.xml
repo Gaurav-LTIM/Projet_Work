@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog id ="idPurchasingGroup"
+		noDataText="No Purchasing Group Found"
+		title="Select Purchasing Group"
+		search=".onSearchPurchasingGroup"
+		searchPlaceholder="Search Purchasing Group"
+		confirm=".onPurchasingGroupValueHelpDialogClose"
+		cancel=".onValueHelpDialogClose"
+		items="{
+			path: 'validationService2>/ZPURGRPVH'
+		}">
+		<StandardListItem
+			title="{validationService2>PurchasingGroup}"
+			description="{validationService2>PurchasingGrpName}"
+			type="Active" />
+	</SelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,44 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: com.sap.coupang.zgrsummary
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+        backend:
+          - url: http://ds4.coupang.net:443
+            client: '300'
+            authenticationType: BasicAuthentication
+            destination: DS4HTTP300
+            path: /sap
+          - url: http://ds4.coupang.net:443
+            client: '100'
+            authenticationType: BasicAuthentication
+            destination: DS4HTTP100
+            path: /sap/opu/odata4/sap/zui_poitem/srvd_a2x/sap/zui_poitem/0001/
+          - url: http://ds4.coupang.net:443
+            client: '100'
+            authenticationType: BasicAuthentication
+            destination: DS4HTTP100
+            path: /sap/opu/odata4/sap/zui_pr_upload/srvd/sap/zui_pr_upload/0001/
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        flp:
+          theme: sap_horizon

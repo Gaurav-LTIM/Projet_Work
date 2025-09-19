@@ -1,0 +1,281 @@
+<mvc:View
+  controllerName="com.sap.dashboard.db.idocdashboard.controller.Overview"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  xmlns:layout="sap.ui.layout"
+  xmlns:viz="sap.viz.ui5.controls"
+  xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+  xmlns:viz.data="sap.viz.ui5.data"
+  xmlns:f="sap.f"
+  height="100%">
+
+  <ScrollContainer
+    height="100%"
+    vertical="true"
+    horizontal="false"
+    focusable="true">
+
+    <VBox class="sapUiSmallMargin">
+
+        <Toolbar>    
+              <Image id="companyLogo" width="120px"/>    
+        </Toolbar>
+ 
+      
+      <!-- Row 1: IDOC Type & InterfaceType        -->
+      <HBox class="sapUiSmallMarginTop">
+
+      <!-- IDOC Type Chart -->
+        <f:Card
+          id="idBarChartIdocType"
+          width="500px" height="300px"
+          headerPosition="Top"
+          class="cardchartPosition">
+          
+          <f:content>
+            <viz:VizFrame
+              id="idVizBarChartIdocType"
+              uiConfig="{applicationSet:'fiori'}"
+              height="100%" width="100%" vizType="bar"
+              selectData="onChartSelect"
+              vizProperties="{
+                plotArea: {
+                  dataLabel: { visible: true },
+                  colorPalette: ['#00FF00', '#FF0000']
+                },
+                title: {
+                  visible: true,
+                  text: 'IDOCType Status Distribution'
+                }
+              }">
+              
+              <viz:dataset>
+                <viz.data:FlattenedDataset data="{idocTypeChartModel>/ChartData}">
+                  <viz.data:dimensions>
+                    <viz.data:DimensionDefinition name="IDOC Type" value="{idocTypeChartModel>IDOCType}" />
+                    <viz.data:DimensionDefinition name="Status" value="{idocTypeChartModel>Status}" />
+                  </viz.data:dimensions>
+                  <viz.data:measures>
+                    <viz.data:MeasureDefinition name="Count" value="{idocTypeChartModel>Count}" />
+                  </viz.data:measures>
+                </viz.data:FlattenedDataset>
+              </viz:dataset>
+
+              <viz:feeds>
+                <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Count"/>
+                <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="IDOC Type"/>
+                <viz.feeds:FeedItem uid="color" type="Dimension" values="Status"/>
+              </viz:feeds>
+            </viz:VizFrame>
+          </f:content>
+        </f:Card>
+
+        <!-- Interface type chart -->
+        <f:Card
+            id="idBarChartInterfaceType"
+            width="500px"
+            height="300px"
+            headerPosition="Top"
+            class="cardchartPosition">
+
+            <f:content>
+              <viz:VizFrame
+                id="idVizBarChartInterfaceType"
+                uiConfig="{applicationSet:'fiori'}"
+                height="100%" width="100%" vizType="bar"
+                selectData="onChartSelect"
+                vizProperties="{
+                  plotArea: {
+                    dataLabel: { visible: true },
+                    colorPalette: ['#1abc9c', '#e74c3c']
+                  },
+                  title: {
+                    visible: true,
+                    text: 'Interface Type Status Distribution'
+                  }
+                }">
+
+                <viz:dataset>
+                  <viz.data:FlattenedDataset data="{interfaceTypeChartModel>/ChartData}">
+                    <viz.data:dimensions>
+                      <viz.data:DimensionDefinition name="InterfaceType" value="{interfaceTypeChartModel>InterfaceType}" />
+                      <viz.data:DimensionDefinition name="Status" value="{interfaceTypeChartModel>Status}" />
+                    </viz.data:dimensions>
+                    <viz.data:measures>
+                      <viz.data:MeasureDefinition name="Count" value="{interfaceTypeChartModel>Count}" />
+                    </viz.data:measures>
+                  </viz.data:FlattenedDataset>
+                </viz:dataset>
+
+                <viz:feeds>
+                <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="InterfaceType"/>
+                <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Count"/>
+                <viz.feeds:FeedItem uid="color" type="Dimension" values="Status"/>
+
+                </viz:feeds>
+              </viz:VizFrame>
+            </f:content>
+          </f:Card>
+      </HBox>
+
+      <!-- Row 2: Monthly & Weekly -->
+      <HBox>
+      <!-- Monthly Chart -->
+        <f:Card id="idPieChartMonthly" width="300px" height="300px" headerPosition="Top" class="cardSpacing">
+          <f:content>
+            <viz:VizFrame
+              id="idVizPieChartMonthly"
+              uiConfig="{applicationSet:'fiori'}"
+              height="100%" width="100%" vizType="pie"
+              selectData="onChartSelect"
+              vizProperties="{
+                plotArea: { dataLabel: { visible: true }, colorPalette: ['#00FF00', '#FF0000'] },
+                title: { visible: true, text: 'IDOC Monthly Status Distribution' }
+              }">
+              <viz:dataset>
+                <viz.data:FlattenedDataset data="{chartModelMonthly>/ChartData}">
+                  <viz.data:dimensions>
+                    <viz.data:DimensionDefinition name="Status" value="{chartModelMonthly>Status}" />
+                  </viz.data:dimensions>
+                  <viz.data:measures>
+                    <viz.data:MeasureDefinition name="Count" value="{chartModelMonthly>Count}" />
+                  </viz.data:measures>
+                </viz.data:FlattenedDataset>
+              </viz:dataset>
+              <viz:feeds>
+                <viz.feeds:FeedItem uid="size" type="Measure" values="Count" />
+                <viz.feeds:FeedItem uid="color" type="Dimension" values="Status" />
+              </viz:feeds>
+              <viz:dependents>
+                <viz:Popover id="idPopMonthly" />
+              </viz:dependents>
+            </viz:VizFrame>
+          </f:content>
+        </f:Card>
+
+
+        <!-- Weekly Chart -->
+        <f:Card id="idBarChartWeekly" width="700px" height="300px" headerPosition="Top" class="cardWeeklySpacing">
+          <f:content>
+           <viz:VizFrame id="idVizBarChartWeekly" width="200%" height="300px" selectData="onChartSelect" vizType="column"
+  uiConfig="{applicationSet:'fiori'}"
+  vizProperties="{
+    plotArea: {
+      dataLabel: { visible: true },
+      colorPalette: ['#2ecc71', '#e74c3c']
+    },
+    title: {
+      visible: true,
+      text: 'Weekly IDOC Status Distribution'
+    },
+    categoryAxis: {
+      title: { visible: true },
+      label: {
+        angle: 0,
+        style: {
+          fontSize: '12px'
+        }
+        
+      }
+    },
+    valueAxis: {
+      title: { visible: true }
+    }
+  }">
+
+              <viz:dataset>
+                <viz.data:FlattenedDataset data="{weeklyChartModel>/ChartData}">
+                  <viz.data:dimensions>
+                    <viz.data:DimensionDefinition name="Label" value="{weeklyChartModel>Label}" />
+                    <viz.data:DimensionDefinition name="Status" value="{weeklyChartModel>Status}" />
+                  </viz.data:dimensions>
+                  <viz.data:measures>
+                    <viz.data:MeasureDefinition name="Count" value="{weeklyChartModel>Count}" />
+                  </viz.data:measures>
+                </viz.data:FlattenedDataset>
+              </viz:dataset>
+              <viz:feeds>
+                <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Count"/>
+                <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Label"/>
+                <viz.feeds:FeedItem uid="color" type="Dimension" values="Status"/>
+              </viz:feeds>
+            </viz:VizFrame>
+          </f:content>
+        </f:Card>
+      </HBox>
+
+      <!-- Row 3: Daily & Hourly -->
+      <HBox class="sapUiSmallMarginTop">
+
+      <!-- Daily Chart -->
+        <f:Card id="idBarChartDaily" width="300px" height="300px" headerPosition="Top" class="cardPosition">
+          <f:content>
+            <viz:VizFrame id="idVizBarChartDaily"  
+                  uiConfig="{applicationSet:'fiori'}" 
+                  height="100%" width="100%" 
+                  vizType="pie" 
+                  selectData="onChartSelect" 
+                  vizProperties="{ plotArea: 
+                                    { dataLabel: { visible: true }, 
+                                    colorPalette: ['#00FF00', '#FF0000'] }, 
+                                    title: { 
+                                          visible: true, 
+                                          text: 'IDOC Daily Status Distribution' 
+                                              }  
+                                    }">
+              <viz:dataset>
+                <viz.data:FlattenedDataset data="{chartModelDaily>/ChartData}">
+                  <viz.data:dimensions>
+                  <viz.data:DimensionDefinition name="Status" value="{chartModelDaily>Status}"/>
+                  </viz.data:dimensions>
+                  <viz.data:measures>
+                  <viz.data:MeasureDefinition name="Count" value="{chartModelDaily>Count}"/>
+                  </viz.data:measures>
+                </viz.data:FlattenedDataset>
+              </viz:dataset>
+              <viz:feeds>
+                <viz.feeds:FeedItem uid="size" type="Measure" values="Count"/>
+                <viz.feeds:FeedItem uid="color" type="Dimension" values="Status"/>
+              </viz:feeds>
+              <viz:dependents>
+              <viz:Popover id="idPopDaily"/>
+              </viz:dependents>
+            </viz:VizFrame>
+          </f:content>
+        </f:Card>
+        
+
+
+       <!-- Hourly Chart -->
+        <f:Card id="idBarChartHourly" width="600px" height="300px" headerPosition="Top" class="cardPosition">
+          <f:content>
+            <viz:VizFrame id="idVizBarChartHourly" width="100%" height="300px" vizType="bar" selectData="onChartSelect"
+              uiConfig="{applicationSet:'fiori'}"
+              vizProperties="{
+                plotArea: { dataLabel: { visible: true }, colorPalette: ['#2ecc71', '#e74c3c'] },
+                title: { visible: true, text: 'Hourly IDOC Status Distribution' }
+              }">
+              <viz:dataset>
+                <viz.data:FlattenedDataset data="{hourlyChartModel>/ChartData}">
+                  <viz.data:dimensions>
+                    <viz.data:DimensionDefinition name="Label" value="{hourlyChartModel>Label}" />
+                    <viz.data:DimensionDefinition name="Status" value="{hourlyChartModel>Status}" />
+                  </viz.data:dimensions>
+                  <viz.data:measures>
+                    <viz.data:MeasureDefinition name="Count" value="{hourlyChartModel>Count}" />
+                  </viz.data:measures>
+                </viz.data:FlattenedDataset>
+              </viz:dataset>
+              <viz:feeds>
+                <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Count"/>
+                <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Label"/>
+                <viz.feeds:FeedItem uid="color" type="Dimension" values="Status"/>
+              </viz:feeds>
+            </viz:VizFrame>
+          </f:content>
+        </f:Card>
+      </HBox>
+
+    </VBox>
+  </ScrollContainer>
+</mvc:View>

@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <SelectDialog
+        id="idV4Supplier"
+        noDataText="No Supplier Found"
+        title="Select Supplier"
+        search=".onV4SearchSupplier"
+        searchPlaceholder="Search Supplier"
+        confirm=".onV4SupplierValueHelpDialogClose"
+        cancel=".onValueHelpDialogClose"
+        items="{ path: 'validationService>/ZFIXVENDORVH'}"    >
+        <StandardListItem
+            title="{validationService>Vendor}"
+            type="Active"
+        />
+    </SelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,302 @@
+<mvc:View xmlns:f="sap.f" controllerName="com.sap.prupload.pruploadlatest.controller.DisplayPR"
+    xmlns:mvc="sap.ui.core.mvc" 	
+    xmlns:core="sap.ui.core"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:ui="sap.ui.table"
+    xmlns="sap.m" 
+	xmlns:unified="sap.ui.unified" 
+	xmlns:layout="sap.ui.layout" 
+	xmlns:form="sap.ui.layout.form"
+	xmlns:mdc="sap.ui.mdc">
+   <f:DynamicPage id="display" title="{i18n>title}">
+   <f:title></f:title>
+    <f:header>
+    	<f:DynamicPageHeader>
+					<f:content>
+					<VBox>
+					
+						<fb:FilterBar id="filterbar" persistencyKey="myPersKey" useToolbar="false" search=".onSearch" showClearOnFB="true" clear="onClear"   filterChange=".onFilterChange" showFilterConfiguration="false"    afterVariantLoad=".onAfterVariantLoad">
+							<fb:filterGroupItems>
+								<fb:FilterGroupItem name="PR" label="PR" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+									<Input id ="idFilterPR"/>
+									</fb:control>
+								</fb:FilterGroupItem>
+								<fb:FilterGroupItem name="Plant" label="Plant" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+										<Input id ="Plant" valueHelpRequest="onPlantF4" showValueHelp="true"/>
+									</fb:control>
+								</fb:FilterGroupItem>
+								<fb:FilterGroupItem name="Material Code" label="Material Code" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+											<Input id ="Material" valueHelpRequest="onMaterialF4" showValueHelp="true"/>
+									</fb:control>
+                                    
+								</fb:FilterGroupItem>
+                                <fb:FilterGroupItem name="Request Date" label="Request Date" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+			<DateRangeSelection
+			id="DRS1"
+			class="DRS1"
+			value= "{
+				'type': 'sap.ui.model.type.DateInterval',
+				'formatOptions': {
+					'pattern': 'yyyy-MM-dd'
+				},
+				'parts': [
+					{
+						'type': 'sap.ui.model.type.Date',
+						'path': 'filterDateModel>/requestStart'
+					},
+					{
+						'type': 'sap.ui.model.type.Date',
+						'path': 'filterDateModel>/requestEnd'
+					}
+				]
+			}"
+			placeholder="Enter Request Date"
+			change="handleChange"/>
+									</fb:control>
+                                    
+								</fb:FilterGroupItem>
+                                <fb:FilterGroupItem name="Delivery Date" label="Delivery Date" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+												<DateRangeSelection
+			id="DRS2"
+			class="DRS1"
+			value= "{
+				'type': 'sap.ui.model.type.DateInterval',
+				'formatOptions': {
+					'pattern': 'yyyy-MM-dd'
+				},
+				'parts': [
+					{
+						'type': 'sap.ui.model.type.Date',
+						'path': 'filterDateModel>/deliveryStart'
+					},
+					{
+						'type': 'sap.ui.model.type.Date',
+						'path': 'filterDateModel>/deliveryEnd'
+					}
+				]
+			}"
+			placeholder="Enter Delivery Date"
+			change="handleChange"/>
+									</fb:control>
+                                    
+								</fb:FilterGroupItem>
+                                <fb:FilterGroupItem name="Vendor" label="Vendor" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+											<Input id ="Vendor" valueHelpRequest="onVendorF4" showValueHelp="true"/>
+									</fb:control>
+                                    
+                                    
+								</fb:FilterGroupItem>
+
+								 
+                                    <fb:FilterGroupItem name="Include Deleted Items" label="Include Deleted Items" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+										<CheckBox id ="idDelete" ></CheckBox>
+                                    
+                                    	</fb:control>
+								</fb:FilterGroupItem>
+								  <fb:FilterGroupItem name="Include Closed Items" label="Include Closed Items" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+										<CheckBox id ="idClose" ></CheckBox>
+									</fb:control>
+								</fb:FilterGroupItem>
+								
+							</fb:filterGroupItems>
+							
+						</fb:FilterBar>
+
+						<!-- <Toolbar>
+						<ToolbarSpacer />
+					 	<Button text="Clear" press=".onClearFilters" />
+					</Toolbar> -->
+					</VBox>
+						
+					</f:content>
+				</f:DynamicPageHeader>
+    </f:header>
+    <f:content>
+     <ui:Table id="displayTbl"  visible="true" 	rows="{/tblitems}" fixedColumnCount="2" 
+				selectionMode="Multi">
+               	<ui:extension>
+					<OverflowToolbar style="Clear">
+					<Title text="Purchase Requisitions ({AppModel>/count})" level="H2"/>
+					
+				<ToolbarSpacer/>
+				<!-- <Button text ="Convert PR to PO" press ="onPOConvert"></Button> -->
+				<Button text ="Mass Upload" press ="onNavExcel"></Button>
+                <Button text ="Copy"  press ="onCopy"/>
+                <Button text = "Delete"  press ="onDelete"/>
+					</OverflowToolbar>
+				</ui:extension>      
+		
+                        <ui:columns>
+                          	<ui:Column width="11rem">
+						<Label text="Purchase requisition" />
+						<ui:template>
+							<Text text="{PurchaseRequisition}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+                  
+                    <ui:Column width="11rem">
+						<Label text="Item" />
+						<ui:template>
+							<Text text="{PurchaseRequisitionItem}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+					    <ui:Column width="11rem">
+						<Label text="Status" />
+						<ui:template>
+							<Text text="{ProcessingStatus}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Request Date" />
+						<ui:template>
+							<Text text="{PurReqCreationDate}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Purchasing Group" />
+						<ui:template>
+							<Text text="{PurchasingGroup}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Material" />
+						<ui:template>
+							<Text text="{Material}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+					 <ui:Column width="11rem">
+						<Label text="MaterialDesc" />
+						<ui:template>
+							<Text text="{ProductName}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Quantity" />
+						<ui:template>
+							<Text text="{RequestedQuantity}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Unit" />
+						<ui:template>
+							<Text text="{BaseUnit}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Delivery date" />
+						<ui:template>
+							<Text text="{DeliveryDate}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Plant" />
+						<ui:template>
+							<Text text="{Plant}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+					 <ui:Column width="11rem">
+						<Label text="PlantDesc" />
+						<ui:template>
+							<Text text="{PlantName}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+					
+					
+					
+                    <ui:Column width="11rem">
+						<Label text="Storage Location" />
+						<ui:template>
+							<Text text="{StorageLocation}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+					<ui:Column width="11rem">
+						<Label text="Storage Location Desc" />
+						<ui:template>
+							<Text text="{StorageLocationName}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+					<ui:Column width="11rem">
+						<Label text="Purchasing Organisation" />
+						<ui:template>
+							<Text text="{PurchasingOrganization}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+					   <ui:Column width="11rem">
+						<Label text="Open Quantity" />
+						<ui:template>
+							<Text text="{OpenQty}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Supplier" />
+						<ui:template>
+							<Text text="{FixedSupplier}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+						 <ui:Column width="11rem">
+						<Label text="SupplierDesc" />
+						<ui:template>
+							<Text text="{SupplierName}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Purchase Order" />
+						<ui:template>
+							<Text text="{PurchasingDocument}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Deletion Indicator" />
+						<ui:template>
+							<Text text="{= ${IsDeleted} === false ? '': 'X'}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+                     <ui:Column width="11rem">
+						<Label text="Close Indicator" />
+						<ui:template>
+							<Text text="{= ${IsClosed} === false ? '': 'X'}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+                   
+                         
+                        </ui:columns>
+                     
+                       
+                    </ui:Table>
+    
+    
+    
+    </f:content>
+    <f:footer></f:footer>
+   </f:DynamicPage>
+        
+</mvc:View>

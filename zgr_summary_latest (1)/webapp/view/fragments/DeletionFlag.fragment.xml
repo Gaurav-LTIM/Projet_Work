@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <SelectDialog
+        id="idV4DeletionFlag"
+        noDataText="No DeletionFlag Found"
+        title="Select DeletionFlag"
+        search=".onV4SearchDeletionFlag"
+        searchPlaceholder="Search DeletionFlag"
+        confirm=".onV4SDeletionFlagValueHelpDialogClose"
+        cancel=".onValueHelpDialogClose"
+        items="{ path: ''}"    >
+        <StandardListItem
+            title="{}"
+            type="Active"
+        />
+    </SelectDialog>
+</core:FragmentDefinition>

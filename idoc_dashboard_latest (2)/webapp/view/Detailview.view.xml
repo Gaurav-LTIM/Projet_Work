@@ -1,0 +1,151 @@
+<mvc:View
+  controllerName="com.sap.dashboard.db.idocdashboard.controller.Detailview"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.ui.table"
+  xmlns:m="sap.m">
+ 
+  <!-- Top toolbar (search/export optional) -->
+  <Table
+    id="idocTable"
+    rows="{detailModel>/}"              
+    visibleRowCountMode="Auto"                      
+    minAutoRowCount="10"
+    enableBusyIndicator="true"
+    selectionMode="None"
+    alternateRowColors="true"
+    enableColumnReordering="true">
+ 
+    <!-- Optional: Header/toolbar as extension -->
+    <extension>
+      <m:OverflowToolbar>
+        <m:Title text="IDoc Details"/>
+      </m:OverflowToolbar>
+    </extension>
+ 
+    <columns>
+      <!-- IDoc Number -->
+      <Column width="10rem" sortProperty="IDocNumber" filterProperty="IDocNumber" autoResizable="true">
+        <label><m:Label text="IDoc Number"/></label>
+        <template>
+          <m:Text text="{detailModel>IDocNumber}" />
+        </template>
+      </Column>
+ 
+      <!-- Message Code -->
+      <Column width="7rem" sortProperty="Mescode" filterProperty="Mescode" autoResizable="true">
+        <label><m:Label text="Message Code"/></label>
+        <template><m:Text text="{detailModel>Mescode}"/></template>
+      </Column>
+ 
+      <!-- Message Function -->
+      <Column width="8rem" sortProperty="Mesfaction" filterProperty="Mesfaction" autoResizable="true">
+        <label><m:Label text="Message Function"/></label>
+        <template><m:Text text="{detailModel>Mesfaction}"/></template>
+      </Column>
+ 
+      <!-- Recon Key -->
+      <Column width="10rem" sortProperty="Reconkey" filterProperty="Reconkey" autoResizable="true">
+        <label><m:Label text="Recon Key"/></label>
+        <template><m:Text text="{detailModel>Reconkey}"/></template>
+      </Column>
+ 
+      <!-- Technical Status -->
+      <Column width="8rem" sortProperty="IDOCStatus" filterProperty="IDOCStatus" autoResizable="true">
+        <label><m:Label text="IDoc Status"/></label>
+        <template><m:Text text="{detailModel>IDOCStatus}"/></template>
+      </Column>
+ 
+      <!-- Business Status as ObjectStatus -->
+      <Column width="12rem" sortProperty="Status" filterProperty="Status" autoResizable="true">
+        <label><m:Label text="Status"/></label>
+        <template>
+          <m:ObjectStatus
+            text="{detailModel>StatusDescription}"/>
+        </template>
+      </Column>
+ 
+      <!-- Status Description (wrap) -->
+      <Column width="24rem" autoResizable="true" hAlign="Left">
+        <label><m:Label text="IDoc Status Description"/></label>
+        <template>
+          <m:Text text="{detailModel>IDOCstatusdesc}" wrapping="true" maxLines="3"/>
+        </template>
+      </Column>
+ 
+      <!-- FI Doc No -->
+      <Column width="10rem" sortProperty="SAPFIDocumentNo" filterProperty="SAPFIDocumentNo" autoResizable="true">
+        <label><m:Label text="FI Document No"/></label>
+        <template><m:Text text="{detailModel>SAPFIDocumentNo}"/></template>
+      </Column>
+ 
+      <!-- Fiscal Year -->
+      <Column width="7rem" hAlign="End" sortProperty="FiscalYear" filterProperty="FiscalYear" autoResizable="true">
+        <label><m:Label text="Fiscal Year"/></label>
+        <template><m:Text text="{detailModel>FiscalYear}"/></template>
+      </Column>
+ 
+      <!-- Company Code -->
+      <Column width="8rem" sortProperty="CompanyCode" filterProperty="CompanyCode" autoResizable="true">
+        <label><m:Label text="Company Code"/></label>
+        <template><m:Text text="{detailModel>CompanyCode}"/></template>
+      </Column>
+ 
+      <!-- Reference Text (wrap) -->
+      <Column width="20rem" autoResizable="true">
+        <label><m:Label text="Reference Text"/></label>
+        <template><m:Text text="{detailModel>Documentreferencetext}" wrapping="true" maxLines="2"/></template>
+      </Column>
+ 
+      <!-- Created At (date) -->
+      <Column width="12rem" sortProperty="CreatedAt" filterProperty="CreatedAt" autoResizable="true">
+        <label><m:Label text="Created At"/></label>
+        <template>
+          <m:Text text="{detailModel>CreatedAt}"/>
+        </template>
+      </Column>
+ 
+      <!-- Create Time (if separate) -->
+      <Column width="10rem" sortProperty="Createtim" filterProperty="Createtim" autoResizable="true" visible="false">
+        <label><m:Label text="Create Time"/></label>
+        <template><m:Text text="{detailModel>Createtim}"/></template>
+      </Column>
+ 
+      <!-- Combined CDateTime (if used) -->
+      <Column width="12rem" sortProperty="cdatetime" filterProperty="cdatetime" autoResizable="true" visible="false">
+        <label><m:Label text="Created DateTime"/></label>
+        <template><m:Text text="{detailModel>cdatetime}"/></template>
+      </Column>
+ 
+      <!-- Error Message (wrap) -->
+      <Column width="24rem" autoResizable="true">
+        <label><m:Label text="Error Message"/></label>
+        <template><m:Text text="{detailModel>Errormsg}" wrapping="true" maxLines="3"/></template>
+      </Column>
+ 
+      <!-- Batch Id -->
+      <Column width="10rem" sortProperty="BatchId" filterProperty="BatchId" autoResizable="true">
+        <label><m:Label text="Batch Id"/></label>
+        <template><m:Text text="{detailModel>BatchId}"/></template>
+      </Column>
+ 
+      <!-- Header Text (wrap) -->
+      <Column width="18rem" autoResizable="true" visible="false">
+        <label><m:Label text="Header Text"/></label>
+        <template><m:Text text="{detailModel>HeaderText}" wrapping="true" maxLines="2"/></template>
+      </Column>
+ 
+      <!-- Message Type -->
+      <Column width="10rem" sortProperty="Messagetype" filterProperty="Messagetype" autoResizable="true">
+        <label><m:Label text="Message Type"/></label>
+        <template><m:Text text="{detailModel>Messagetype}"/></template>
+      </Column>
+ 
+      <!-- IDoc Type -->
+      <Column width="10rem" sortProperty="IDOCtype" filterProperty="IDOCtype" autoResizable="true">
+        <label><m:Label text="IDoc Type"/></label>
+        <template><m:Text text="{detailModel>IDOCtype}"/></template>
+      </Column>
+    </columns>
+  </Table>
+</mvc:View>
+ 

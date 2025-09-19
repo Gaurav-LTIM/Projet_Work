@@ -1,0 +1,106 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:ui="sap.ui.table"
+    xmlns:unified="sap.ui.unified"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    controllerName="com.sap.coupang.zgrsummary.controller.GRSelectionScreen">
+
+    <Page id="display" showHeader="true" showFooter="false">
+        
+        <customHeader>
+            <Toolbar>
+                <Button text="Execute" press="onExecute"  />
+                <Button text="Clear" press="onClear" />
+            </Toolbar>
+        </customHeader>
+
+        <content>
+            <VBox fitContainer="true" class="pageCss">
+                <HBox class="hBorder sapUiLargeMarginTop" alignItems="Center">
+                    <VBox>
+
+                        <!-- Company Code -->
+                        <HBox alignItems="Center">
+                            <Label text="Company Code" width="10rem" />
+                            <Input id="idFilterCompanyCode" showValueHelp="true" valueHelpRequest="onCompanyCodeOpen" width="15rem" />
+                        </HBox>
+
+                        <!-- Plant -->
+                        <HBox alignItems="Center">
+                            <Label text="Plant" width="10rem" required="true" />
+                            <Input id="idFilterPlant" required="true" showValueHelp="true" valueHelpRequest="onPlantOpen" width="15rem" />
+                        </HBox>
+
+                        <!-- Supplier -->
+                        <HBox alignItems="Center">
+                            <Label text="Supplier" width="10rem" />
+                            <Input id="idFilterSupplier" showValueHelp="true" valueHelpRequest="onSupplierOpen" width="15rem" />
+                        </HBox>
+
+                        <!-- Purchase Order Type -->
+                        <HBox alignItems="Center">
+                            <Label text="Purchase Order Type" width="10rem" />
+                            <Input id="idFilterPoTypes" showValueHelp="true" valueHelpRequest="onPoTypesOpen" width="15rem" />
+                        </HBox>
+
+                        <!-- Purchase Order -->
+                        <HBox alignItems="Center">
+                            <Label text="Purchase Order" width="10rem" />
+                            <Input id="idFilterPo" width="15rem" />
+                        </HBox>
+
+                        <!-- Purchasing Group -->
+                        <HBox alignItems="Center">
+                            <Label text="Purchasing Group" width="10rem" />
+                            <Input id="idFilterPurGroup" showValueHelp="true" valueHelpRequest="onPurGroupOpen" width="15rem" />
+                        </HBox>
+
+                        <!-- Material Group -->
+                        <HBox alignItems="Center">
+                            <Label text="Material Group" width="10rem" />
+                            <Input id="idFilterMaterialGroup" showValueHelp="true" valueHelpRequest="onMaterialGrpOpen" width="15rem" />
+                        </HBox>
+
+                        <!-- Material -->
+                        <HBox alignItems="Center">
+                            <Label text="Material" width="10rem" />
+                            <Input id="idFilterMaterial" showValueHelp="true" valueHelpRequest="onMaterialOpen" width="15rem" />
+                        </HBox>
+
+                        <!-- PO Date -->
+                        <HBox alignItems="Center">
+                            <Label text="PO Create Date" width="10rem" />
+                            <DateRangeSelection id="PODate" placeholder="Enter PO Date" change="handlePoChange" width="15rem" displayFormat="yyyy-MM-dd" />
+                        </HBox>
+
+                        <!-- GR Date -->
+                        <HBox alignItems="Center">
+                            <Label text="Good Receipt Date" width="10rem" />
+                            <DateRangeSelection id="GRdate" placeholder="Enter GR Date" change="handlePGRDateChange" width="15rem" displayFormat="yyyy-MM-dd" />
+                        </HBox>
+
+                        <!-- Cancellation Checkbox -->
+                        <HBox alignItems="Center">
+                            <Label text="Including Cancellation" width="10rem" />
+                            <CheckBox id="idCancel" />
+                        </HBox>
+
+                    </VBox>
+                </HBox>
+
+                <!-- Text -->
+                <HBox class="hBorder sapUiLargeMarginTop" alignItems="Center">
+                    <VBox>
+                        <Text text="This program can capture purchase order goods receipt information." />
+                    </VBox>
+                </HBox>
+
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

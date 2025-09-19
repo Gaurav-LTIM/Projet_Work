@@ -1,0 +1,25 @@
+/* Enter your custom styles here */
+
+.cardSpacing {
+  margin-right: 20px;
+  margin-top: 30px;
+  margin-left: 100px;
+}
+
+.cardWeeklySpacing {
+  margin-right: 20px;
+  margin-top: 30px;
+  margin-left: 50px;
+}
+
+.cardPosition{
+    margin-right: 20px;
+    margin-top: 60px;
+    margin-left: 100px;
+}
+
+.cardchartPosition{
+    margin-right: 20px;
+    margin-top: 70px;
+    margin-left: 100px;
+}

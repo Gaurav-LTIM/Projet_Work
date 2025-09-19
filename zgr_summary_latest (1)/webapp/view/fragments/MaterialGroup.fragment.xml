@@ -1,0 +1,15 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <SelectDialog id="MaterialGroup"
+        noDataText="No MaterialGroup Found"
+        title="Select MaterialGroup"
+        search=".onSearchMaterialGroup2"
+        searchPlaceholder="Search MaterialGroup"
+        confirm=".onMaterialGroup2ValueHelpDialogClose"
+        cancel=".onValueHelpDialogClose"
+        items="{
+            path: 'validationService2>/ZMATGRPVH'}">
+        <StandardListItem
+            title="{validationService2>MATERIALGRP}"
+            type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

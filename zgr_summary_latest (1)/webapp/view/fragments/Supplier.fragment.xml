@@ -1,0 +1,497 @@
+<core:FragmentDefinition xmlns="sap.m"
+                         xmlns:core="sap.ui.core"
+                         xmlns:ui="sap.ui.table">
+    <Dialog id="idSupplier" title="Supplier's Account Number (1)" draggable="true" resizable="true" contentWidth="800px" contentHeight="600px">
+        <VBox class="sapUiSmallMargin">
+ 
+            <!-- Filter Section -->
+            <HBox width="100%" class="sapUiSmallMarginTop" justifyContent="End">
+                    <Button text="Go" type="Emphasized" press="onSearchSupplier"  />
+            </HBox>
+           
+        <VBox width="100%" class="sapUiSmallMarginEnd">
+        <Label text="Supplier Type" />
+        <ComboBox id="supplierTypeDropdown"
+          selectedKey="{viewModelSupplier>/selectedSupplierType}"
+          selectionChange="onSupplierTypeChange"
+          width="25rem">
+            <items>
+                <core:Item key="layoutgeneral" text="A: Suppliers(General)" />
+                <core:Item key="layoutcompanycode" text="K:Suppliers by Company Code" />
+                <core:Item key="layoutcountry" text="I:Suppliers by Country/Region and Company Code" />
+                <core:Item key="layoutregion" text="L:Suppliers by Country/Region" />
+                <core:Item key="layoutpernum" text="P:Suppliers by Personnel Number" />
+                <core:Item key="layouttax" text="T:Vendors by Tax Information" />  
+                <core:Item key="layoutaccgrp" text="S:ATT Suppliers/Vendors per Account Group" />
+                <core:Item key="layoutpurchasing" text="E:Suppliers: Purchasing" />
+            </items>
+        </ComboBox>
+ 
+     </VBox>
+     <VBox class="sapUiSmallMarginTop">
+ 
+            <VBox id="generalFilterSection">
+                <HBox class="sapUiSmallMarginBottom">
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="SearchTerm" />
+                        <Input id="idgenSearchTerm" showValueHelp="true" valueHelpRequest="onSearchTermOpen" />
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Country/Region Key" />
+                        <Input id="idgencountryKey" showValueHelp="true" valueHelpRequest="onCountryOpen" />
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Postal Code" />
+                        <Input id="idgenpostalCode" />
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="City" />
+                        <Input id="idgencity" />
+                    </VBox>
+                </HBox>
+                <HBox class="sapUiSmallMarginBottom">
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Name" />
+                        <Input id="idgenname" showValueHelp="true" valueHelpRequest="onNameOpen" />
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Supplier" />
+                        <Input id="idgensupplierInput" showValueHelp="true" valueHelpRequest="onSupplierValueOpen" />
+                    </VBox>
+                    <VBox width="100%">
+                        <Label text="Deletion Flag"  />
+                        <Input id="idgendeletionFlag" width="10rem" showValueHelp="true" valueHelpRequest="onDeletionFlagOpen" />
+                    </VBox>
+                </HBox>
+            </VBox>
+ 
+            <VBox id="companyFilterSection" visible="false">
+                <HBox class="sapUiSmallMarginBottom">
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="SearchTerm" />
+                        <Input id="idcompSearchTerm" showValueHelp="true" valueHelpRequest="onSearchTermOpen" />
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Country/Region Key" />
+                        <Input id="idcompCountry" showValueHelp="true" valueHelpRequest="onCountryOpen" />
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Postal Code" />
+                        <Input id="idcompPostalcode" />
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="City" />
+                        <Input id="idcompCity" />
+                    </VBox>                  
+                </HBox>
+                <HBox class="sapUiSmallMarginBottom">
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Name" />
+                        <Input id="idcompname" showValueHelp="true" valueHelpRequest="onNameOpen"/>
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Supplier" />
+                        <Input id="idcompSupplier" showValueHelp="true" valueHelpRequest="onSupplierValueOpen" />
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Company Code" />
+                        <Input id="idcompCompanycode" showValueHelp="true" valueHelpRequest="onCompanyOpen" />
+                    </VBox>                    
+                    <VBox width="100%">
+                        <Label text="Deletion Flag" />
+                        <Input id="idcompdeletionFlag" width="10rem" showValueHelp="true" valueHelpRequest="onDeletionFlagOpen" />
+                    </VBox>
+                </HBox>
+            </VBox>
+ 
+            <VBox id="countryFilterSection" visible="false">
+                <HBox class="sapUiSmallMarginBottom">
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Country" />
+                        <Input id="idcountryCountry" showValueHelp="true" valueHelpRequest="onCountryOpen"/>
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="City" />
+                        <Input id="idcountryCity" />
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="SearchTerm" />
+                        <Input id="idcountrySearchTerm" showValueHelp="true" valueHelpRequest="onSearchTermOpen" />
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Name" />
+                        <Input id="idcountryName" showValueHelp="true" valueHelpRequest="onNameOpen"/>
+                    </VBox>              
+                </HBox>
+ 
+                <HBox class="sapUiSmallMarginBottom">
+                     <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Supplier" />
+                        <Input id="idcountrySupplier" showValueHelp="true" valueHelpRequest="onSupplierValueOpen" />
+                    </VBox>    
+                     <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Company Code" />
+                        <Input id="idcountryCompanyCode" showValueHelp="true" valueHelpRequest="onCompanyOpen" />
+                    </VBox>                    
+                </HBox>
+            </VBox>  
+ 
+            <VBox id="regionFilterSection" visible="false">
+                <HBox class="sapUiSmallMarginBottom">
+                   <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Country/Region Key" />
+                        <Input id="idregionCountry" showValueHelp="true" valueHelpRequest="onCountryOpen" />
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="SearchTerm" />
+                        <Input id="idregionSearchTerm" showValueHelp="true" valueHelpRequest="onSearchTermOpen" />
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Name" />
+                        <Input id="idregionName" showValueHelp="true" valueHelpRequest="onNameOpen" />
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="City" />
+                        <Input id="idregionCity"  />
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Supplier" />
+                        <Input id="idregionSupplier"  showValueHelp="true" valueHelpRequest="onSupplierValueOpen"/>
+                    </VBox>                    
+                </HBox>
+            </VBox>
+ 
+            <VBox id="pernumFilterSection" visible="false">
+                <HBox class="sapUiSmallMarginBottom">
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Personnel Number" />
+                        <Input id="idpernumPerNum"  showValueHelp="true" valueHelpRequest="onPersonNumOpen"/>
+                    </VBox>
+                   <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Name" />
+                        <Input id="idpernumName" showValueHelp="true" valueHelpRequest="onNameOpen" />
+                    </VBox>
+                     <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Company Code" />
+                        <Input id="idpernumCompanyCode" showValueHelp="true" valueHelpRequest="onCompanyOpen"/>
+                    </VBox>                    
+                </HBox>
+            </VBox>
+ 
+            <VBox id="taxFilterSection" visible="false">
+                <HBox class="sapUiSmallMarginBottom">
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Tax Number 1" />
+                        <Input id="idtaxNum1"  showValueHelp="true" valueHelpRequest="onTaxNum1Open"/>
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Tax Number 2" />
+                        <Input id="idtaxNum2"  showValueHelp="true" valueHelpRequest="onTaxNum2Open"/>
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Tax Number 3" />
+                        <Input id="idtaxNum3"  showValueHelp="true" valueHelpRequest="onTaxNum3Open"/>
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Tax Number 1" />
+                        <Input id="idtaxNum4"  showValueHelp="true" valueHelpRequest="onTaxNum4Open"/>
+                    </VBox>
+                </HBox>
+                <HBox class="sapUiSmallMarginBottom">
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Tax Number 5" />
+                        <Input id="idtaxNum5"  showValueHelp="true" valueHelpRequest="onTaxNum5Open"/>
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Tax Number 6" />
+                        <Input id="idtaxNum6" />
+                    </VBox>  
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="vAT Registration Number" />
+                        <Input id="idtaxCRegNum" showValueHelp="true" valueHelpRequest="onRegNumOpen"/>
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Country/Region Key" />
+                        <Input id="idtaxCountry" showValueHelp="true" valueHelpRequest="onCountryOpen" />
+                    </VBox>
+                </HBox>
+                <HBox class="sapUiSmallMarginBottom">                    
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Name" />
+                        <Input id="idtaxName" showValueHelp="true" valueHelpRequest="onNameOpen"/>
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Supplier" />
+                        <Input id="idtaxSupplier" showValueHelp="true" valueHelpRequest="onSupplierValueOpen"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+ 
+             <VBox id="accGrpFilterSection" visible="false">
+                <HBox class="sapUiSmallMarginBottom">
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Account group" />
+                        <Input id="idaccGroup" showValueHelp="true" valueHelpRequest="onAccGrpOpen" />
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="SearchTerm" />
+                        <Input id="idaccSearchTerm" showValueHelp="true" valueHelpRequest="onSearchTermOpen" />
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Country/Region Key" />
+                        <Input id="idaccCountry" />
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Postal Code" />
+                        <Input id="idaccPostalCode"  />
+                    </VBox>
+                </HBox>
+                <HBox class="sapUiSmallMarginBottom">
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="City" />
+                        <Input id="idaccCity"  />
+                    </VBox>
+                    <VBox class="sapUiSmallMarginEnd">
+                        <Label text="Name" />
+                        <Input id="idaccName"  showValueHelp="true" valueHelpRequest="onNameOpen"/>
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Supplier" />
+                        <Input id="idaccSupplier"  showValueHelp="true" valueHelpRequest="onSupplierValueOpen"/>
+                    </VBox>
+                    <VBox width="100%">
+                        <Label text="Deletion Flag" />
+                        <Input id="idaccDeletionFlag" width="10rem" showValueHelp="true" valueHelpRequest="onDeletionFlagOpen" />
+                    </VBox>
+                </HBox>
+            </VBox>
+ 
+             <VBox id="purchasingFilterSection" visible="false">
+                <HBox class="sapUiSmallMarginBottom">
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="SearchTerm" />
+                        <Input id="idpurSearchTerm" showValueHelp="true" valueHelpRequest="onSearchTermOpen" />
+                    </VBox>
+                    <VBox class="sapUiSmallMarginEnd">
+                        <Label text="Country/Region Key" />
+                        <Input id="idpurchasingCountry" showValueHelp="true" valueHelpRequest="onCountryOpen" />
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Postal Code" />
+                        <Input id="idpurPostalCode"  />
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="City" />
+                        <Input id="idpurCity"  />
+                    </VBox>  
+                    <VBox class="sapUiSmallMarginEnd">
+                        <Label text="Name" />
+                        <Input id="idpurName" showValueHelp="true" valueHelpRequest="onNameOpen" />
+                    </VBox>                
+                </HBox>
+                <HBox class="sapUiSmallMarginBottom">                  
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Supplier" />
+                        <Input id="idpurSupplier" showValueHelp="true" valueHelpRequest="onSupplierValueOpen" />
+                    </VBox>
+                    <VBox class="sapUiSmallMarginEnd">
+                        <Label text="Purchasing Organisation" />
+                        <Input id="idpurPurOrg" showValueHelp="true" valueHelpRequest="onPurOrgOpen" />
+                    </VBox>
+                    <VBox  class="sapUiSmallMarginEnd">
+                        <Label text="Subseq.settlement" />
+                        <Input id="idpurSettlement"  />
+                    </VBox>
+                    <VBox width="100%">
+                        <Label text="Deletion Flag" />
+                        <Input id="idpurDeletionFlag" width="10rem" showValueHelp="true" valueHelpRequest="onDeletionFlagOpen" />
+                    </VBox>                
+                </HBox>
+            </VBox>
+ 
+            </VBox>
+ 
+ 
+ 
+          <HBox >
+            <!-- <ui:Table id="supplierTable"
+                      rows="{/suppliers}"
+                      visible="false"
+                      visibleRowCount="10"
+                      selectionMode="Single"                
+                      enableColumnReordering="true"
+                      enableSelectAll="true"
+                      rowSelectionChange="onSupplierSelect">
+ 
+                <ui:extension>                  
+                    <Title text="Suppliers Found ({AppModel>/supplierCount})" level="H2"/>
+                </ui:extension>        
+                <ui:columns>
+                    <ui:Column width="11rem">
+                        <Label text="Supplier" />
+                        <ui:template>
+                            <Text text="{Vendor}" wrapping="false"  />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column width="11rem">
+                        <Label text="Name" />
+                        <ui:template>
+                            <Text text="{VendorName}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column width="11rem">
+                        <Label text="Country" />
+                        <ui:template>
+                            <Text text="{Country}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column width="11rem">
+                        <Label text="City" />
+                        <ui:template>
+                            <Text text="{City}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column width="11rem">
+                        <Label text="Postal Code" />
+                        <ui:template>
+                            <Text text="{PostalCode}" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                    <ui:Column width="11rem">
+                        <Label text="Deletion Flag" />
+                        <ui:template>
+                            <Text text="{= ${DeletionFlag} ? 'X' : '' }" wrapping="false" />
+                        </ui:template>
+                    </ui:Column>
+                </ui:columns>
+            </ui:Table> -->
+ 
+            <ui:Table id="idGeneralTable" rows="{/suppliers}" visible="false" selectionMode="Single"  enableColumnReordering="true"  enableSelectAll="true"  rowSelectionChange="onSupplierSelect">
+                <ui:extension>                  
+                    <Title text="Suppliers Found ({AppModel>/supplierCount})" level="H2"/>
+                </ui:extension>
+                <ui:columns>
+                    <ui:Column label="SearchTerm"><ui:template><Text text="{}" /></ui:template></ui:Column>
+                    <ui:Column label="Country/Region Key"><ui:template><Text text="{Country}" /></ui:template></ui:Column>
+                    <ui:Column label="Postal Code"><ui:template><Text text="{PostalCode}" /></ui:template></ui:Column>
+                    <ui:Column label="City"><ui:template><Text text="{City}" /></ui:template></ui:Column>
+                    <ui:Column label="Name"><ui:template><Text text="{VendorName}" /></ui:template></ui:Column>
+                    <ui:Column label="Supplier"><ui:template><Text text="{Vendor}" /></ui:template></ui:Column>
+                    <ui:Column label="Deletion Flag"><ui:template><Text text="{DeletionFlag}" /></ui:template></ui:Column>
+                </ui:columns>
+            </ui:Table>
+ 
+            <ui:Table id="idCompanyTable" rows="{/suppliers}" visible="false" selectionMode="Single"  enableColumnReordering="true"  enableSelectAll="true"  rowSelectionChange="onSupplierSelect">
+                <ui:extension>                  
+                    <Title text="Suppliers Found ({AppModel>/supplierCount})" level="H2"/>
+                </ui:extension>
+                <ui:columns>
+                    <ui:Column label="SearchTerm"><ui:template><Text text="{}" /></ui:template></ui:Column>
+                    <ui:Column label="Country/Region Key"><ui:template><Text text="{Country}" /></ui:template></ui:Column>
+                    <ui:Column label="Postal Code"><ui:template><Text text="{PostalCode}" /></ui:template></ui:Column>
+                    <ui:Column label="City"><ui:template><Text text="{City}" /></ui:template></ui:Column>
+                    <ui:Column label="Name"><ui:template><Text text="{VendorName}" /></ui:template></ui:Column>
+                    <ui:Column label="Supplier"><ui:template><Text text="{Vendor}" /></ui:template></ui:Column>
+                    <ui:Column label="Company Code"><ui:template><Text text="{}" /></ui:template></ui:Column>
+                    <ui:Column label="Deletion Flag"><ui:template><Text text="{DeletionFlag}" /></ui:template></ui:Column>
+                </ui:columns>
+            </ui:Table>
+ 
+            <ui:Table id="idCountryTable" rows="{/suppliers}" visible="false" selectionMode="Single"  enableColumnReordering="true"  enableSelectAll="true"  rowSelectionChange="onSupplierSelect">
+                <ui:extension>                  
+                    <Title text="Suppliers Found ({AppModel>/supplierCount})" level="H2"/>
+                </ui:extension>
+                <ui:columns>
+                    <ui:Column label="Country"><ui:template><Text text="{Country}" /></ui:template></ui:Column>
+                    <ui:Column label="City"><ui:template><Text text="{City}" /></ui:template></ui:Column>
+                    <ui:Column label="SearchTerm"><ui:template><Text text="{}" /></ui:template></ui:Column>
+                    <ui:Column label="Name"><ui:template><Text text="{VendorName}" /></ui:template></ui:Column>
+                    <ui:Column label="Supplier"><ui:template><Text text="{Vendor}" /></ui:template></ui:Column>
+                    <ui:Column label="Company Code"><ui:template><Text text="{}" /></ui:template></ui:Column>
+                </ui:columns>
+            </ui:Table>
+ 
+            <ui:Table id="idRegionTable" rows="{/suppliers}" visible="false" selectionMode="Single"  enableColumnReordering="true"  enableSelectAll="true"  rowSelectionChange="onSupplierSelect">
+                <ui:extension>                  
+                    <Title text="Suppliers Found ({AppModel>/supplierCount})" level="H2"/>
+                </ui:extension>
+                <ui:columns>
+                    <ui:Column label="Country/Region Key"><ui:template><Text text="{Country}" /></ui:template></ui:Column>
+                    <ui:Column label="SearchTerm"><ui:template><Text text="{}" /></ui:template></ui:Column>
+                    <ui:Column label="Name"><ui:template><Text text="{VendorName}" /></ui:template></ui:Column>
+                    <ui:Column label="City"><ui:template><Text text="{City}" /></ui:template></ui:Column>
+                    <ui:Column label="Supplier"><ui:template><Text text="{Vendor}" /></ui:template></ui:Column>
+                </ui:columns>
+            </ui:Table>
+ 
+            <ui:Table id="idPernumTable" rows="{/suppliers}" visible="false" selectionMode="Single"  enableColumnReordering="true"  enableSelectAll="true"  rowSelectionChange="onSupplierSelect">
+                <ui:extension>                  
+                    <Title text="Suppliers Found ({AppModel>/supplierCount})" level="H2"/>
+                </ui:extension>
+                <ui:columns>
+                    <ui:Column label="Personnel Number"><ui:template><Text text="{}" /></ui:template></ui:Column>
+                    <ui:Column label="Name"><ui:template><Text text="{VendorName}" /></ui:template></ui:Column>
+                    <ui:Column label="Company Code"><ui:template><Text text="{}" /></ui:template></ui:Column>
+                </ui:columns>
+            </ui:Table>
+ 
+            <ui:Table id="idTaxTable" rows="{/suppliers}" visible="false" selectionMode="Single"  enableColumnReordering="true"  enableSelectAll="true"  rowSelectionChange="onSupplierSelect">
+                <ui:extension>                  
+                    <Title text="Suppliers Found ({AppModel>/supplierCount})" level="H2"/>
+                </ui:extension>
+                <ui:columns>
+                    <ui:Column label="Tax Number 1"><ui:template><Text text="{}" /></ui:template></ui:Column>
+                    <ui:Column label="Tax Number 2"><ui:template><Text text="{}" /></ui:template></ui:Column>
+                    <ui:Column label="Tax Number 3"><ui:template><Text text="{}" /></ui:template></ui:Column>
+                    <ui:Column label="Tax Number 4"><ui:template><Text text="{}" /></ui:template></ui:Column>
+                    <ui:Column label="Tax Number 5"><ui:template><Text text="{}" /></ui:template></ui:Column>
+                    <ui:Column label="Tax Number 6"><ui:template><Text text="{}" /></ui:template></ui:Column>
+                    <ui:Column label="VAT Registration Number"><ui:template><Text text="{}" /></ui:template></ui:Column>
+                    <ui:Column label="Country/Region Key"><ui:template><Text text="{Country}" /></ui:template></ui:Column>
+                    <ui:Column label="Name"><ui:template><Text text="{VendorName}" /></ui:template></ui:Column>
+                    <ui:Column label="Supplier"><ui:template><Text text="{Vendor}" /></ui:template></ui:Column>
+                </ui:columns>
+            </ui:Table>
+ 
+            <ui:Table id="idAccGrpTable" rows="{/suppliers}" visible="false" selectionMode="Single"  enableColumnReordering="true"  enableSelectAll="true"  rowSelectionChange="onSupplierSelect">
+                <ui:extension>                  
+                    <Title text="Suppliers Found ({AppModel>/supplierCount})" level="H2"/>
+                </ui:extension>
+                <ui:columns>
+                    <ui:Column label="Account Group"><ui:template><Text text="{}" /></ui:template></ui:Column>
+                    <ui:Column label="SearchTerm"><ui:template><Text text="{}" /></ui:template></ui:Column>
+                    <ui:Column label="Country/Region Key"><ui:template><Text text="{Country}" /></ui:template></ui:Column>
+                    <ui:Column label="Postal Code"><ui:template><Text text="{PostalCode}" /></ui:template></ui:Column>
+                    <ui:Column label="City"><ui:template><Text text="{City}" /></ui:template></ui:Column>
+                    <ui:Column label="Name"><ui:template><Text text="{VendorName}" /></ui:template></ui:Column>
+                    <ui:Column label="Supplier"><ui:template><Text text="{Vendor}" /></ui:template></ui:Column>
+                    <ui:Column label="Deletion Flag"><ui:template><Text text="{DeletionFlag}" /></ui:template></ui:Column>
+                </ui:columns>
+            </ui:Table>
+ 
+            <ui:Table id="idPurchasingTable" rows="{/suppliers}" visible="false" selectionMode="Single"  enableColumnReordering="true"  enableSelectAll="true"  rowSelectionChange="onSupplierSelect">
+                <ui:extension>                  
+                    <Title text="Suppliers Found ({AppModel>/supplierCount})" level="H2"/>
+                </ui:extension>
+                <ui:columns>
+                    <ui:Column label="SearchTerm"><ui:template><Text text="{}" /></ui:template></ui:Column>
+                    <ui:Column label="Country/Region Key"><ui:template><Text text="{Country}" /></ui:template></ui:Column>
+                    <ui:Column label="Postal Code"><ui:template><Text text="{PostalCode}" /></ui:template></ui:Column>
+                    <ui:Column label="City"><ui:template><Text text="{City}" /></ui:template></ui:Column>
+                    <ui:Column label="Name"><ui:template><Text text="{VendorName}" /></ui:template></ui:Column>
+                    <ui:Column label="Supplier"><ui:template><Text text="{Vendor}" /></ui:template></ui:Column>
+                    <ui:Column label="Purchasing Organisation"><ui:template><Text text="{}" /></ui:template></ui:Column>
+                    <ui:Column label="Subseq.settlement"><ui:template><Text text="{}" /></ui:template></ui:Column>
+                    <ui:Column label="Deletion Flag"><ui:template><Text text="{DeletionFlag}" /></ui:template></ui:Column>
+                </ui:columns>
+            </ui:Table>
+ 
+            </HBox>
+        </VBox>
+ 
+        <!-- Cancel Button -->
+        <endButton>
+            <Button text="Cancel" press="onSupplierValueHelpDialogClose" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

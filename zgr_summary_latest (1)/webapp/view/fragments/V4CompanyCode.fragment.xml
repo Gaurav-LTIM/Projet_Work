@@ -1,0 +1,18 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog id ="idV4CompanyCode"
+		noDataText="No Company Code Found"
+		title="Select Company Code"
+		search=".onSearchV4CompanyCode"
+		searchPlaceholder="Search Company Code"
+		confirm=".onV4CompanyCodeValueHelpDialogClose"
+		cancel=".onValueHelpDialogClose"
+		items="{
+			path: 'validationService2>/ZCOMPANYCODEVH'
+		}">
+		<StandardListItem
+			title="{validationService2>CompanyCode}"
+			type="Active" />
+	</SelectDialog>
+</core:FragmentDefinition>

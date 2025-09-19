@@ -1,0 +1,133 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:ui="sap.ui.table">
+    <Dialog id="copyCreateDialog" title="Copy and Create PR"   draggable="true" resizable="true" afterClose="onClose1">
+        <content>
+            <ui:Table id="copyCreateTable"  visible="true" 	rows="{dialogModel>/selectedItems}" 
+				selectionMode= "None"  >
+               	     
+		
+                        <ui:columns>
+                          	<ui:Column width="11rem">
+						<Label text="PR" />
+						<ui:template>
+							<Text text="{dialogModel>PurchaseRequisition}" wrapping="false" />
+						</ui:template>
+					</ui:Column>
+                  
+                    <ui:Column width="11rem">
+						<Label text="Item" />
+						<ui:template>
+							<Text text="{dialogModel>PurchaseRequisitionItem}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Request Date" />
+						<ui:template>
+							<Text text="{path: 'dialogModel>PurReqCreationDate' , formatter: '.formatter.formatRequisitionDate'}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Pur.Group" />
+						<ui:template>
+							<Text text="{dialogModel>PurchasingGroup}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Material" />
+						<ui:template>
+							<Text text="{dialogModel>Material}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Quantity" />
+						<ui:template>
+							<Input value="{dialogModel>RequestedQuantity}" />
+						</ui:template>
+
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Unit" />
+						<ui:template>
+							<Text text="{dialogModel>BaseUnit}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Delivery date" />
+						<ui:template>
+							<Text text="{path : 'dialogModel>DeliveryDate' , formatter: '.formatter.formatDeliveryDate'}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Plant" />
+						<ui:template>
+							<Text text="{dialogModel>Plant}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Stor.Loc." />
+						<ui:template>
+							<Text text="{dialogModel>StorageLocation}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Supplier" />
+						<ui:template>
+							<Text text="{dialogModel>Supplier}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Pur Doc" />
+						<ui:template>
+							<Text text="{dialogModel>PurchasingDocument}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+
+					
+					<ui:Column width="11rem">
+						<Label text="Net Price" />
+						<ui:template>
+							<Text text="{dialogModel>ItemNetAmount}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+
+					<ui:Column width="11rem">
+						<Label text="Currency" />
+						<ui:template>
+							<Text text="{dialogModel>PurReqnItemCurrency}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+
+					<ui:Column width="11rem">
+						<Label text="Purchasing InfoRecord" />
+						<ui:template>
+							<Text text="{dialogModel>PurchasingInfoRecord}" wrapping="false" />
+						</ui:template>
+
+					</ui:Column>
+
+                    
+                         
+                        </ui:columns>
+                     
+                       
+                    </ui:Table>
+        </content>
+        <beginButton>
+            <Button id="CreatePR1" text="Create" press="onCopyCreatePR"/>
+        </beginButton>
+        <endButton>
+            <Button id="_IDGenButton7" text="Cancel" press="onCopyCancel"/>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

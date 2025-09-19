@@ -1,0 +1,165 @@
+{
+  "_version": "1.60.0",
+  "sap.app": {
+    "id": "com.sap.coupang.zgrsummary",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.18.5",
+      "toolsId": "df0d3bc4-891b-4e44-8c1e-c95eb890aefc"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata4/sap/zmm_gw_sb_gr_summary/srvd_a2x/sap/zmm_sd_gr_summary/0001/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      },
+      "zui_poitem": {
+        "uri": "/sap/opu/odata4/sap/zui_poitem/srvd_a2x/sap/zui_poitem/0001/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/zui_poitem/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      },
+      "zui_pr_upload": {
+        "uri": "/sap/opu/odata4/sap/zui_pr_upload/srvd/sap/zui_pr_upload/0001/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/zui_pr_upload/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.120.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.sap.coupang.zgrsummary.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "validationService2": {
+        "dataSource": "zui_poitem",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "validationService": {
+        "dataSource": "zui_pr_upload",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "com.sap.coupang.zgrsummary.view",
+        "async": true,
+        "viewPath": "com.sap.coupang.zgrsummary.view"
+      },
+      "routes": [
+        {
+          "name": "RouteGRSelectionScreen",
+          "pattern": ":?query:",
+          "target": [
+            "TargetGRSelectionScreen"
+          ]
+        },
+        {
+          "name": "GRDisplay",
+          "pattern": "GRDisplay",
+          "target": [
+            "TargetGRDisplay"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetGRSelectionScreen": {
+          "id": "GRSelectionScreen",
+          "name": "GRSelectionScreen"
+        },
+        "TargetGRDisplay": {
+          "id": "GRDisplay",
+          "name": "GRDisplay"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "com.sap.coupang.zgrsummary.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  }
+}

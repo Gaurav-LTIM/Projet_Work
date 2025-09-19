@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: com.kelda.yw.ssc.fe.trx.wspquoteapp622.25
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: s6d
+          url: http://s6d1:443/
+          client: '200'
+        app:
+          name: ZSSCET622QT_25
+          description: Quote Price Tool 2025
+          package: ZSSC
+          transport: S6DK909844
+        exclude:
+          - /test/

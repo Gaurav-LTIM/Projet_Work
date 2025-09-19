@@ -1,0 +1,21 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog id ="idPlant"
+		noDataText="No Plant Found"
+		title="Select Plant"
+		search=".onSearchPlant"
+		searchPlaceholder="Search Plant"
+		confirm=".onPlantValueHelpDialogClose"
+		cancel=".onValueHelpDialogClose"
+		
+
+		items="{
+			path: 'validationService>/ZPlantVH'
+		}">
+		<StandardListItem
+			title="{validationService>Plant}"
+			description = "{validationService>PlantDescription}"
+			type="Active" />
+	</SelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,215 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities" />
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common" />
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI" />
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/sap/ZCDS_SSC_C_622_PRJ_HDR_25_CDS/$metadata">
+        <edmx:Include Namespace="ZCDS_SSC_C_622_PRJ_HDR_25_CDS" Alias="SAP" />
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+            <!--  >Added SB 20241122</! -->
+            <!--  Generate Cost  -->
+            <Annotations Target="SAP.ZCDS_SSC_C_622_PRJ_HDR_25_CDS_Entities/ZCDS_SSC_C_622_PRJ_HDR_25Gen_cost">
+                <Annotation Term="Common.SideEffects">
+                    <Record Type="Common.SideEffectsType">
+                        <PropertyValue Property="TargetEntities">
+                            <Collection>
+                                <NavigationPropertyPath>to_RulesOutput</NavigationPropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.IsActionCritical" Bool="true" />
+            </Annotations>
+            <!--  Generate Cost  -->
+            <!--  Update Cost  -->
+            <Annotations Target="SAP.ZCDS_SSC_C_622_PRJ_HDR_25_CDS_Entities/ZCDS_SSC_C_622_PRJ_HDR_25Upd_cost">
+                <Annotation Term="Common.SideEffects">
+                    <Record Type="Common.SideEffectsType">
+                        <PropertyValue Property="TargetEntities">
+                            <Collection>
+                                <NavigationPropertyPath>to_RulesOutput</NavigationPropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.IsActionCritical" Bool="true" />
+            </Annotations>
+            <!--  Update Cost  -->
+            <!--  Save As Duplicate  -->
+            <Annotations Target="SAP.ZCDS_SSC_C_622_PRJ_HDR_25_CDS_Entities/ZCDS_SSC_C_622_PRJ_HDR_25Save_as">
+                <Annotation Term="Common.SideEffects">
+                    <Record Type="Common.SideEffectsType">
+                        <PropertyValue Property="TargetEntities">
+                            <Collection>
+                                <NavigationPropertyPath>to_RulesOutput</NavigationPropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.IsActionCritical" Bool="true" />
+            </Annotations>
+            <!--  Save As Duplicate  -->
+            <!--  Replicate Bulk  -->
+            <Annotations Target="SAP.ZCDS_SSC_C_622_PRJ_HDR_25_CDS_Entities/ZCDS_SSC_C_622_PRJ_HDR_25Rep_blksrv">
+                <Annotation Term="Common.SideEffects">
+                    <Record Type="Common.SideEffectsType">
+                        <PropertyValue Property="TargetEntities">
+                            <Collection>
+                                <NavigationPropertyPath>to_BlkService</NavigationPropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.IsActionCritical" Bool="true" />
+            </Annotations>
+            <!--  Replicate Bulk  -->
+            <Annotations Target="ZCDS_SSC_C_622_PRJ_HDR_25_CDS.ZCDS_SSC_C_622_PRJ_HDR_25Type">
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Action" String="ZCDS_SSC_C_622_PRJ_HDR_25_CDS.ZCDS_SSC_C_622_PRJ_HDR_25_CDS_Entities/ZCDS_SSC_C_622_PRJ_HDR_25Gen_cost" />
+                            <PropertyValue Property="Label" String="{@i18n>GENERATE_COST}" />
+                        </Record>
+                        <!--  Generate Quotes  -->
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Action" String="ZCDS_SSC_C_622_PRJ_HDR_25_CDS.ZCDS_SSC_C_622_PRJ_HDR_25_CDS_Entities/ZCDS_SSC_C_622_PRJ_HDR_25Gen_quote" />
+                            <PropertyValue Property="Label" String="{@i18n>GENERATE_QUOTE}" />
+                        </Record>
+                        <!--  Added for Save As  -->
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Action" String="ZCDS_SSC_C_622_PRJ_HDR_25_CDS.ZCDS_SSC_C_622_PRJ_HDR_25_CDS_Entities/ZCDS_SSC_C_622_PRJ_HDR_25Save_as" />
+                            <PropertyValue Property="Label" String="{@i18n>SAVE_AS}" />
+                            <Annotation Term="UI.Hidden" Path="Preparation_ac" />
+                        </Record>
+                        <!--  Update Cost  -->
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Action" String="ZCDS_SSC_C_622_PRJ_HDR_25_CDS.ZCDS_SSC_C_622_PRJ_HDR_25_CDS_Entities/ZCDS_SSC_C_622_PRJ_HDR_25Upd_cost" />
+                            <PropertyValue Property="Label" String="{@i18n>UPDATE_COST}" />
+                        </Record>
+                        <!--  Update Quotes  -->
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Action" String="ZCDS_SSC_C_622_PRJ_HDR_25_CDS.ZCDS_SSC_C_622_PRJ_HDR_25_CDS_Entities/ZCDS_SSC_C_622_PRJ_HDR_25Upd_quote" />
+                            <PropertyValue Property="Label" String="{@i18n>UPDATE_QUOTE}" />
+                        </Record>
+                        <!--  Replicate Bulk Service -->
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Action" String="ZCDS_SSC_C_622_PRJ_HDR_25_CDS.ZCDS_SSC_C_622_PRJ_HDR_25_CDS_Entities/ZCDS_SSC_C_622_PRJ_HDR_25Rep_blksrv" />
+                            <PropertyValue Property="Label" String="{@i18n>REPLICATE_BULK_SERVICE}" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <!--  >End addition SB 20241122</! -->
+
+            <!--  Change of Clean and Waste Credit  26/01/2025 -->
+            <Annotations Target="SAP.ZCDS_SSC_C_622_INFRA_25Type">
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CleanCredit" />
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="{@i18n>CREDIT_CAL}" />
+                            <PropertyValue Property="Action" String="ZCDS_SSC_C_622_PRJ_HDR_25_CDS.ZCDS_SSC_C_622_PRJ_HDR_25_CDS_Entities/ZCDS_SSC_C_622_INFRA_25Credit_cal" />
+                            <PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Neutral" />
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP.ZCDS_SSC_C_622_INFRA_25Type">
+                <Annotation Term="com.sap.vocabularies.Common.v1.SideEffects" Qualifier="CalculatePrice">
+                    <Record>
+                        <PropertyValue Property="SourceProperties">
+                            <Collection>
+                                <PropertyPath>CreditMtrSize</PropertyPath>
+                                <PropertyPath>InfBrwAddToWaste</PropertyPath>
+                                <PropertyPath>CreditDomPty</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="TargetProperties">
+                            <Collection>
+                                <String>CleanCredit</String>
+                                <String>FoulCredit</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="TriggerAction" String="ZCDS_SSC_C_622_PRJ_HDR_25_CDS.ZCDS_SSC_C_622_PRJ_HDR_25_CDS_Entities/ZCDS_SSC_C_622_INFRA_25Credit_cal" />
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <!--  Change of Clean and Waste Credit  -->
+
+            <!--  Added for remove create button for Infra 43543</! -->
+            <Annotations Target="SAP.ZCDS_SSC_C_622_PRJ_HDR_25_CDS_Entities/ZCDS_SSC_C_622_INFRA_25">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false" />
+                    </Record>
+                </Annotation>
+                <!--  Remove the delete button  -->
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false" />
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <!-- Days X Bay 31/01/2025-->
+            <Annotations Target="SAP.ZCDS_SSC_C_622_STWCC_25Type">
+                <Annotation Term="com.sap.vocabularies.Common.v1.SideEffects" Qualifier="DaysXBay">
+                    <Record>
+                        <PropertyValue Property="SourceProperties">
+                            <Collection>
+                                <PropertyPath>zqt_stcc_pbclosure_24</PropertyPath>
+                                <PropertyPath>zqt_stcc_pbclosdays_24</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="TargetProperties">
+                            <Collection>
+                                <String>zqt_stcc_pbclosure</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="TriggerAction" String="ZCDS_SSC_C_622_PRJ_HDR_25_CDS.ZCDS_SSC_C_622_PRJ_HDR_25_CDS_Entities/ZCDS_SSC_C_622_STWCC_25Cal_days" />
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <!-- Days X Bay 31/01/2025 -->
+
+
+            <Annotation Term="com.sap.vocabularies.UI.v1.LineItem">
+                <Collection>
+                <!-- Other fields -->
+                    <Record Type="com.sap.vocabularies.UI.v1.DataFieldWithNavigation">
+                        <PropertyValue Property="Value" Path="ProjID"/>
+                        <PropertyValue Property="Target" Path="zcpy_prj_nav_url"/>
+                    </Record>
+                </Collection>   
+            </Annotation>       
+
+            <Annotation Term="com.sap.vocabularies.UI.v1.DataFieldWithNavigation">
+                <PropertyValue Property="Value" Path="ProjID"/>
+                <PropertyValue Property="OnClick" String="com.kelda.yw.ssc.fe.trx.wspquoteapp622.25.ext.controller.Extension.onProjIDClick"/>
+            </Annotation>        
+
+            <!--  <Annotations Target="SAP.ZCDS_SSC_C_622_PRJ_HDR_25_CDS_Entities/ZCDS_SSC_C_622_INFRA_25">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonInsertableNavigationProperties">
+                            <Collection>
+                                <NavigationPropertyPath>to_Infra</NavigationPropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>  -->
+            <!--  >Added for remove create button for Infra 43543</! -->
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

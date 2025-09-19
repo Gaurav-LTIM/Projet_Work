@@ -1,0 +1,173 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:ui="sap.ui.table"
+    xmlns="sap.m"
+    xmlns:unified="sap.ui.unified"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    controllerName="com.sap.coupang.zgrsummary.controller.GRDisplay">
+
+    <f:DynamicPage id="display2" title="{i18n>title}">
+        <f:content>
+            <ui:Table
+                id="displayGRTbl"
+                rows="{tblModel>/tblitems}"
+                alternateRowColors="true"
+                visible="true"
+                selectionMode="None">
+
+                <ui:extension>
+                    <OverflowToolbar style="Clear">
+                        <Title text="Records : {AppModel>/count}" level="H2" />
+                        <ToolbarSpacer/>
+                        <Button text ="Excel Export" press ="onExcelExport" type ="Emphasized"></Button>
+                    </OverflowToolbar>
+                </ui:extension>
+
+                <ui:columns>
+                    <ui:Column width="11rem" filterProperty="Vendor" sortProperty="Vendor">
+                        <Label text="Vendor" />
+                        <ui:template>
+                            <Text text="{tblModel>Vendor}" />
+                        </ui:template>
+                    </ui:Column>
+
+                    <ui:Column width="11rem" filterProperty="VendorName" sortProperty="VendorName">
+                        <Label text="Vendor Name" />
+                        <ui:template>
+                            <Text text="{tblModel>VendorName}" />
+                        </ui:template>
+                    </ui:Column>
+
+                    <ui:Column width="11rem" filterProperty="Material" sortProperty="Material">
+                        <Label text="Material" />
+                        <ui:template>
+                             <Text text="{tblModel>Material}" />
+                        </ui:template>
+                    </ui:Column>
+
+                    <ui:Column width="11rem" filterProperty="ShortText" sortProperty="ShortText">
+                        <Label text="Material Description"/>
+                        <ui:template>
+                            <Text text="{tblModel>ShortText}"/>
+                        </ui:template>
+                    </ui:Column>
+
+                    <ui:Column width="15rem" filterProperty="PostingDate" sortProperty="PostingDate">
+                        <Label text="Posting Date" />
+                        <ui:template>
+                            <Text text="{tblModel>PostingDate}" />
+                        </ui:template>
+                    </ui:Column>
+
+                    <ui:Column width="11rem" filterProperty="DebitCreditInd" sortProperty="DebitCreditInd">
+                        <Label text="Debit/Credit" />
+                        <ui:template>
+                            <Text text="{tblModel>DebitCreditInd}" />
+                        </ui:template>
+                    </ui:Column>
+
+                    <ui:Column width="11rem" filterProperty="QtyUnitofEntry" sortProperty="QtyUnitofEntry">
+                        <Label text="Qty Unit of Entry" />
+                        <ui:template>
+                            <Text text="{tblModel>QtyUnitofEntry}" />
+                        </ui:template>
+                    </ui:Column>
+
+                    <ui:Column width="11rem" filterProperty="UnitofEntry" sortProperty="UnitofEntry">
+                        <Label text="Unit of Entry" />
+                        <ui:template>
+                            <Text text="{tblModel>UnitofEntry}" />
+                        </ui:template>
+                    </ui:Column>
+
+                    <ui:Column width="11rem" filterProperty="Amount" sortProperty="Amount">
+                        <Label text="Amount" />
+                        <ui:template>
+                            <Text text="{tblModel>Amount}" />
+                        </ui:template>
+                    </ui:Column>
+
+                    <ui:Column width="16rem" filterProperty="Currency" sortProperty="Currency">
+                        <Label text="Currency" />
+                        <ui:template>
+                            <Text text="{tblModel>Currency}" />
+                        </ui:template>
+                    </ui:Column>
+
+                    <ui:Column width="11rem" filterProperty="Plant" sortProperty="Plant">
+                        <Label text="Plant" />
+                        <ui:template>
+                            <Text text="{tblModel>Plant}" />
+                        </ui:template>
+                    </ui:Column>
+
+                    <ui:Column width="11rem" filterProperty="StorageLocation" sortProperty="StorageLocation">
+                        <Label text="Storage Location" />
+                        <ui:template>
+                            <Text text="{tblModel>StorageLocation}" />
+                        </ui:template>
+                    </ui:Column>
+
+                    <ui:Column width="11rem" filterProperty="PONumber" sortProperty="PONumber">
+                        <Label text="Purchase Order" />
+                        <ui:template>
+                            <Link text="{tblModel>PONumber}" press="onNavPurchaseOrder" />
+                        </ui:template>
+                    </ui:Column>
+
+                    <ui:Column width="11rem" filterProperty="POItem" sortProperty="POItem">
+                        <Label text="PO Item" />
+                        <ui:template>
+                            <Text text="{tblModel>POItem}" />
+                        </ui:template>
+                    </ui:Column>
+
+                    <ui:Column width="11rem" filterProperty="MatDocYear" sortProperty="MatDocYear">
+                        <Label text="Mat.Doc.Year" />
+                        <ui:template>
+                            <Text text="{tblModel>MatDocYear}" />
+                        </ui:template>
+                    </ui:Column>
+
+                    <ui:Column width="11rem" filterProperty="MaterialDocument" sortProperty="MaterialDocument">
+                        <Label text="Material Document" />
+                        <ui:template>
+                            <Link text="{tblModel>MaterialDocument}" press="onMigoPress" />
+                        </ui:template>
+                    </ui:Column>
+
+                    <ui:Column width="11rem" filterProperty="MatDocItem" sortProperty="MatDocItem">
+                        <Label text="Mat. Doc. Item" />
+                        <ui:template>
+                            <Text text="{tblModel>MatDocItem}" />
+                        </ui:template>
+                    </ui:Column>
+
+                    <ui:Column width="11rem" filterProperty="QtyinSKU" sortProperty="QtyinSKU">
+                        <Label text="Qty in SKU" />
+                        <ui:template>
+                            <Text text="{tblModel>QtyinSKU}" />
+                        </ui:template>
+                    </ui:Column>
+
+                    <ui:Column width="11rem" filterProperty="UnitofMeasure" sortProperty="UnitofMeasure">
+                        <Label text="Base Unit of Measure" />
+                        <ui:template>
+                            <Text text="{tblModel>UnitofMeasure}" />
+                        </ui:template>
+                    </ui:Column>
+                    <!-- <ui:Column width="11rem" filterProperty="UnitofMeasure" sortProperty="UnitofMeasure">
+                        <Label text="Movement Type" />
+                        <ui:template>
+                            <Text text="{tblModel>MovementType}" />
+                        </ui:template>
+                    </ui:Column> -->
+                </ui:columns>
+            </ui:Table>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

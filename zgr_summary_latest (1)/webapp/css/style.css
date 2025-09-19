@@ -1,0 +1,17 @@
+/* Enter your custom styles here */.hBorder{
+    border: 1px solid grey; /* Example: 1px solid light gray border */
+    border-radius: 5px; /* Optional: rounded corners */
+    padding: 10px;
+}
+
+.radioSpacing{
+margin-right: 15rem;
+}
+
+.pageCss{
+padding : 10px;
+}
+
+.progressCss{
+margin-left: 30rem!important;
+}

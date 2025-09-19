@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: com.sap.coupang.zgrsummary
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: DS4HTTP100
+          url: http://ds4.coupang.net:443
+          client: '100'
+        app:
+          name: ZGRSUMMARYLIST
+          description: GR SUMMARY STATUS LIST
+          package: ZFDP
+          transport: DS4K900687
+        exclude:
+          - /test/

@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog id ="idPoType"
+		noDataText="No Plant Found"
+		title="Select Po Type"
+		search=".onSearchPO"
+		searchPlaceholder="Search PoType"
+		confirm=".onPoTypeValueHelpDialogClose"
+		cancel=".onValueHelpDialogClose"
+		items="{
+			path: 'validationService2>/ZPOTYPEVH'
+		}">
+		<StandardListItem
+			title="{validationService2>POTYPE}"
+			description = "{validationService2>POTYPENAME}"
+			type="Active" />
+	</SelectDialog>
+</core:FragmentDefinition>

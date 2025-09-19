@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <SelectDialog
+        id="idV4Material"
+        noDataText="No Material Found"
+        title="Select Material"
+        search=".onV4SearchV4Material"
+        searchPlaceholder="Search Material"
+        confirm=".onV4MaterialValueHelpDialogClose"
+        cancel=".onValueHelpDialogClose"
+        items="{ path: 'validationService>/ZMATERIALVH'}"    >
+        <StandardListItem
+            title="{validationService>MaterialCode}"
+            type="Active"
+        />
+    </SelectDialog>
+</core:FragmentDefinition>

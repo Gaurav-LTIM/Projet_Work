@@ -1,0 +1,207 @@
+<core:FragmentDefinition xmlns="sap.m"
+                         xmlns:core="sap.ui.core"
+                         xmlns:ui="sap.ui.table">
+    <Dialog id="idMainMaterial" title="Material Number (1)" draggable="true" resizable="true" contentWidth="900px" contentHeight="600px">
+        <VBox class="sapUiSmallMargin">
+            <HBox width="100%" class="sapUiSmallMarginTop" justifyContent="End">
+                    <Button text="Go" type="Emphasized" press="onSearchMaterial"  />
+            </HBox>
+           
+            <VBox  width="100%" class="sapUiSmallMarginEnd">
+        <Label text="Material Type" />
+        <ComboBox id="materialTypeDropdown"
+          selectedKey="{viewModelMaterial>/selectedMaterialType}"
+          selectionChange="onMaterialTypeChange"
+          width="25rem">
+            <items>
+                <core:Item key="layoutmatnum" text="M: Material Number/Material Description" />
+                <core:Item key="layoutoldmatnum" text="A: Material by Old Material Number" />
+                <core:Item key="layoutmatgroup" text="L: Material by Material Group" />
+                <core:Item key="layoutMatbyMatType" text="T: Material by Material Type" />
+            </items>
+
+        </ComboBox>
+ 
+     </VBox>
+     
+<VBox class="sapUiSmallMarginTop" />
+ 
+         <VBox id="matnumFilterSection" visible="true">
+    <HBox class="sapUiSmallMarginBottom">
+        <VBox  class="sapUiSmallMarginEnd">
+            <Label text="Material description" />
+            <Input id="idmatdesc" showValueHelp="true" valueHelpRequest="onMatDescOpen"/>
+        </VBox>
+        <VBox  class="sapUiSmallMarginEnd">
+            <Label text="Language Key" />
+            <Input id="idlangKey" showValueHelp="true" valueHelpRequest="onLanguageKeyOpen" />
+        </VBox>
+        <VBox  class="sapUiSmallMarginEnd">
+            <Label text="Material" />
+            <Input id="idmat" showValueHelp="true" valueHelpRequest="onV4MaterialOpen"/>
+        </VBox>
+    </HBox>
+</VBox>
+
+
+
+            <VBox id="oldmatnumFilterSection" visible="false">
+    <HBox class="sapUiSmallMarginBottom">
+        <VBox  class="sapUiSmallMarginEnd">
+            <Label text="Old Material Number" />
+            <Input id="idOldMatNum" showValueHelp="true" valueHelpRequest="onOldMatNumOpen"/>
+        </VBox>
+        <VBox  class="sapUiSmallMarginEnd">
+            <Label text="Material description" />
+            <Input id="oidmatdesc" showValueHelp="true" valueHelpRequest="onMatDescOpen"/>
+        </VBox>
+        <VBox  class="sapUiSmallMarginEnd">
+            <Label text="Language Key" />
+            <Input id="oidlangKey" showValueHelp="true" valueHelpRequest="onLanguageKeyOpen" />
+        </VBox>
+        <VBox  class="sapUiSmallMarginEnd">
+            <Label text="Material" />
+            <Input id="oidmat" showValueHelp="true" valueHelpRequest="onV4MaterialOpen"/>
+        </VBox>
+    </HBox>
+</VBox>
+
+<VBox id="matgroupFilterSection" visible="false">
+    <HBox class="sapUiSmallMarginBottom">
+        <VBox  class="sapUiSmallMarginEnd">
+            <Label text="Material Group" />
+            <Input id="idMatGroupL" showValueHelp="true" valueHelpRequest="onMatGroupOpen"/>
+        </VBox>
+        <VBox  class="sapUiSmallMarginEnd">
+            <Label text="Material description" />
+            <Input id="idMatGroupDesc" showValueHelp="true" valueHelpRequest="onMatDescOpen"/>
+        </VBox>
+        <VBox  class="sapUiSmallMarginEnd">
+            <Label text="Material" />
+            <Input id="idMatGroupMaterial" showValueHelp="true" valueHelpRequest="onV4MaterialOpen"/>
+        </VBox>
+    </HBox>
+</VBox>
+
+<VBox id="TFilterSection" visible="false" >
+            <HBox class="sapUiSmallMarginBottom">
+ 
+                <VBox  class="sapUiSmallMarginEnd">
+                    <Label text="Material Type" />
+                    <Input id="idTMatType" showValueHelp="true" valueHelpRequest="onTMatTypeOpen"/>
+                </VBox>
+                <VBox  class="sapUiSmallMarginEnd">
+                    <Label text="Material description" />
+                    <Input id="idTMatDesc" showValueHelp="true" valueHelpRequest="onMatDescOpen"/>
+                </VBox>
+                <VBox  class="sapUiSmallMarginEnd">
+                    <Label text="Language Key" />
+                    <Input id="idTLangKey" showValueHelp="true" valueHelpRequest="onLanguageKeyOpen" />
+                </VBox>
+                <VBox  class="sapUiSmallMarginEnd">
+                    <Label text="Material" />
+                    <Input id="idTMat" showValueHelp="true" valueHelpRequest="onV4MaterialOpen" />
+                </VBox>
+               
+            </HBox>
+        </VBox>
+
+
+            <!-- Table for layoutmatnum -->
+<ui:Table id="materialTableMatNum" selectionMode="Single" visible="false" rows="{/materials}" rowSelectionChange="onMaterialSelect">
+ <ui:extension>                
+    <Title text="Materials Found ({AppModel>/materialCount})" level="H2"/>
+ </ui:extension> 
+    <ui:columns>
+        <ui:Column>
+            <Label text="Material description" />
+            <ui:template><Text text="{MaterialDescription}" /></ui:template>
+        </ui:Column>
+        <ui:Column>
+            <Label text="Language Key" />
+            <ui:template><Text text="{LanguageKey}" /></ui:template>
+        </ui:Column>
+        <ui:Column>
+            <Label text="Material" />
+            <ui:template><Text text="{MaterialCode}" /></ui:template>
+        </ui:Column>
+    </ui:columns>
+</ui:Table>
+
+<ui:Table id="materialTableOldMatNum" visible="false" rows="{/materials}" visibleRowCount="10"
+          selectionMode="Single" rowSelectionChange="onMaterialSelect">
+          <ui:extension>                
+    <Title text="Materials Found ({AppModel>/materialCount})" level="H2"/>
+ </ui:extension> 
+    <ui:columns>
+        <ui:Column>
+            <Label text="Old Material Number" />
+            <ui:template><Text text="{OldMaterialNumber}" /></ui:template>
+        </ui:Column>
+        <ui:Column>
+            <Label text="Material description" />
+            <ui:template><Text text="{MaterialDescription}" /></ui:template>
+        </ui:Column>
+        <ui:Column>
+            <Label text="Language Key" />
+            <ui:template><Text text="{LanguageKey}" /></ui:template>
+        </ui:Column>
+        <ui:Column>
+            <Label text="Material" />
+            <ui:template><Text text="{MaterialCode}" /></ui:template>
+        </ui:Column>
+    </ui:columns>
+</ui:Table>
+<ui:Table id="materialTableMatGroup" visible="false" rows="{/materials}" visibleRowCount="10"
+          selectionMode="Single" rowSelectionChange="onMaterialSelect">
+          <ui:extension>                
+    <Title text="Materials Found ({AppModel>/materialCount})" level="H2"/>
+ </ui:extension> 
+    <ui:columns>
+        <ui:Column>
+            <Label text="Material Group" />
+            <ui:template><Text text="{MaterialGroup}" /></ui:template>
+        </ui:Column>
+        <ui:Column>
+            <Label text="Material description" />
+            <ui:template><Text text="{MaterialDescription}" /></ui:template>
+        </ui:Column>
+        <ui:Column>
+            <Label text="Material" />
+            <ui:template><Text text="{MaterialCode}" /></ui:template>
+        </ui:Column>
+    </ui:columns>
+</ui:Table>
+<ui:Table id="materialTableMatType" visible="false" rows="{/materials}" visibleRowCount="10"
+          selectionMode="Single" rowSelectionChange="onMaterialSelect">
+          <ui:extension>                
+    <Title text="Materials Found ({AppModel>/materialCount})" level="H2"/>
+ </ui:extension> 
+    <ui:columns>
+        <ui:Column>
+            <Label text="Material Type" />
+            <ui:template><Text text="{MaterialType}" /></ui:template>
+        </ui:Column>
+        <ui:Column>
+            <Label text="Material description" />
+            <ui:template><Text text="{MaterialDescription}" /></ui:template>
+        </ui:Column>
+        <ui:Column>
+            <Label text="Language Key" />
+            <ui:template><Text text="{LanguageKey}" /></ui:template>
+        </ui:Column>
+        <ui:Column>
+            <Label text="Material" />
+            <ui:template><Text text="{MaterialCode}" /></ui:template>
+        </ui:Column>
+    </ui:columns>
+</ui:Table>
+
+        </VBox>
+ 
+        <!-- Cancel Button -->
+        <endButton>
+            <Button text="Cancel" press="onMainMaterialValueHelpDialogClose" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

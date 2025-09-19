@@ -1,0 +1,18 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog id ="idPRType"
+		noDataText="No PR Type Found"
+		title="Select "
+		search=".onSearchPRType"
+		searchPlaceholder="Search PR Type"
+		confirm=".onPRTypeValueHelpDialogClose"
+		cancel=".onValueHelpDialogClose"
+		items="{
+			path: 'validationService>/ZPRTYPEVH'
+		}">
+		<StandardListItem
+			title="{validationService>PRType}"
+			type="Active" />
+	</SelectDialog>
+</core:FragmentDefinition>
