@@ -1,0 +1,55 @@
+
+// cf undeploy command
+cf undeploy <mta-id> --delete-services --delete-service-keys.
+
+
+// to change cf space
+cf target -o <org_id> -s space_name(eg IPTools)   --- after logged in, navigating to that space
+
+// to kill a running process on a port
+npx kill-port 4004	   -   Kill process at a particular port when npm is installed
+
+//--------------------------  GIT --------------------------------------//
+git status -  check for changes 
+
+git add file_name - for adding one particular file
+
+git add .  -  adding all the files
+
+git commit -m "Commit_name"  -  naming that particular change/action
+
+git push -u origin main  -  adding that files to  git
+
+/ ------------------------------------------/
+git fetch --all - fetch remote branches
+
+git branch -a  - list all branches
+
+git checkout branch_name - to move to another branch that exists already
+
+git checkout -b sub-branch origin/sub-branch - check out to that branch
+
+/ -------------------------- ---------------/
+
+- git fetch origin - fetch the latest changes and files
+ 
+then checkout to the sub-branch where changes are not updated
+ 
+- git merge branch_name : merge the latest updated branch to the old sub-branch
+
+-then commit and push
+
+// --------------------------------  GIT ------------------------------------- //
+
+
+Busy element and controller busy property
+
+My_skills: 
+git token: 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 
+
+
+// ------------------------ YW ------------------------------------------//
+
+se09 -> search id "BHIDE1S" TR Assignment -> from list TR click Task -> Menu -> Change Owner -> add your id "DHARANKG"
+
+// ------------------------ YW -----------------------------------------//
